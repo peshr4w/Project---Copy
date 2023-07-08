@@ -53,8 +53,8 @@ section nav.navbar form button {
     height: 30px;
     position: absolute;
     top: calc(100% - 30px);
-    background-color: #f4e285;
-    color: #2D3A3A;
+    background-color: #2D3A3A;
+    color: whitesmoke;
 }
 
 .dots {
