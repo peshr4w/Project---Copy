@@ -1,0 +1,140 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@font-face {
+    font-family: peshang;
+    src: url("Peshang_Des_5_Bold.ttf");
+}
+
+.container-fluid {
+    font-family: peshang;
+    overflow-y: scroll;
+    height: 100dvh;
+    scroll-snap-type: y mandatory;
+}
+
+.container-fluid::-webkit-scrollbar {
+    width: 0;
+}
+
+.container-fluid section {
+    scroll-snap-align: start;
+}
+
+.container-fluid section:first-child {
+    background-color: #f5f5f5 !important;
+    position: relative;
+    transition: 0.1s;
+}
+
+section nav.navbar,
+section nav.navbar form button {
+    font-size: 1rem;
+}
+
+#loginBtn {
+    background-color: #2D3A3A;
+    color: #FCFFFC;
+}
+
+#signupBtn {
+    background-color: #FCFFFC;
+    color: #2D3A3A;
+}
+
+#loginBtn:hover,
+#signupBtn:hover {
+    opacity: 0.6;
+}
+
+.links ul li a {
+    color: #121212;
+}
+
+.container-fluid section:first-child footer {
+    height: 30px;
+    position: absolute;
+    top: calc(100% - 30px);
+    background-color: #f4e285;
+    color: #2D3A3A;
+}
+
+.dots {
+    z-index: 10;
+}
+
+.dots .dot {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 8px;
+    height: 8px;
+    background-color: #2D3A3A;
+    opacity: 0.5;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.slogan {
+    z-index: 2;
+    margin-top: 10%;
+}
+
+.animator {
+    animation: animate 1.5s ease-in-out infinite;
+    background-color: #2D3A3A;
+    color: whitesmoke;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+
+.changing_text {
+    transition: 1s;
+}
+
+.image-container {
+    height: 500px;
+    position: absolute;
+    top: 10%;
+    width: 100%;
+    z-index: 1;
+}
+
+.image-container .image {
+    width: 200px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.image-container .left .image img,
+.image-container .right .image img {
+    width: 100%;
+}
+
+.image-container .left .image,
+.image-container .right .image {
+    transition: 0.5s;
+    opacity: 0.7;
+}
+
+.image-container .left .image:hover,
+.image-container .right .image:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+@media(max-width:600px) {
+    .links {
+        display: none;
+    }
+}
