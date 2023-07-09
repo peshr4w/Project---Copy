@@ -8,7 +8,7 @@
 
 <body>
     <div class="container-fluid p-0 w-100">
-        <section class="h-100 bg-light">
+        <section class="h-100 bg-light" id="section1">
             <nav class="navbar py-3">
                 <div class="d-flex px-4  justify-content-between w-100" dir="ltr">
                     <a href="#" class="navbar-brand"><img src="svg/icon.svg" alt="icon" width="50px"></a>
@@ -25,7 +25,6 @@
                             <button class="btn btn-sm btn-secondary ms-2 rounded rounded-5 border-0 text-black p-2 px-3" id="signupBtn"><bdo dir="rtl">خۆت تۆمار بکە</bdo></button>
                         </form>
                     </div>
-
                 </div>
             </nav>
             <div class="slogan d-flex justify-content-center flex-column align-items-center">
@@ -33,7 +32,7 @@
                     <h1 class="slogan"><bdo dir="rtl">لێرەوە دەست پێ بکە</bdo> </h1>
                     <h2 class="changing_text">changing slogan</h2>
                 </div>
-                <div class="dots d-flex">
+                <div class="dots d-flex mb-3">
                     <div class="dot mx-1 border-0"></div>
                     <div class="dot mx-1 border-0"></div>
                     <div class="dot mx-1 border-0"></div>
@@ -44,14 +43,13 @@
                     <i class="fa-solid fa-caret-down"></i>
                 </div>
             </div>
-
             <footer class="w-100 d-flex align-items-center ">
-                <span class="p-0 mx-auto"><i class="fa-solid fa-caret-down"></i> <bdo dir="rtl">زیاتر ببینە</bdo></span>
+                <span class="p-0 mx-auto"><a href="#section2"> <i class="fa-solid fa-caret-down"></i> <bdo dir="rtl">زیاتر ببینە</bdo></a></span>
             </footer>
             <div class="image-container d-flex justify-content-between px-3">
                 <div class="left d-flex align-items-center">
                     <div class="image d-flex align-items-center">
-                        <img class="rounded rounded-5" src="https://i.pinimg.com/564x/d5/9c/b4/d59cb415c063a38833a6be6b3d324e11.jpg" alt="">
+                        <img class="rounded rounded-5" src="https://i.pinimg.com/564x/aa/59/50/aa5950a4c6e7ec295d6dd8842543c638.jpg" alt="">
                     </div>
                     <div class="image d-flex align-items-center ms-3">
                         <img class="rounded rounded-5" src="https://i.pinimg.com/564x/77/71/38/777138fbe2169ca80112abcc983cd6c8.jpg" alt="">
@@ -67,11 +65,40 @@
                 </div>
             </div>
         </section>
-        <section class="h-100 bg-primary"></section>
-        <section class="h-100 bg-success"></section>
+        <section class="h-100" id="section2">
+            <div class="row h-100">
+                <div class="col-12 col-md-6 d-flex align-items-center">
+                    <div class="container images position-relative">
+                        <img src="https://i.pinimg.com/564x/30/54/10/3054108c912d49d79337b28888d06a7d.jpg" class="rounded rounded-5" alt="" width="200px">
+                        <img src="https://i.pinimg.com/564x/30/22/b5/3022b5b2c0e2ec4fe17490327d2a533d.jpg" class="rounded rounded-5" alt="" width="200px">
+                        <img src="https://i.pinimg.com/564x/e4/84/6a/e4846ab2b51d789193c2d6ee4e1375da.jpg" class="rounded rounded-5" alt="" width="200px">
+                        <img src="https://i.pinimg.com/564x/17/01/f5/1701f50d1b60e1154c2bc4f5aa1e34d3.jpg" class="rounded rounded-5" alt="" width="200px">
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 d-flex align-items-center">
+                    <div class="container position-relative">
+                        <h2 class="text-center mb-3 ">بەدوای هەر شتێکدا بگەڕێ کە دەتەوێت</h1>
+                            <h5 class="text-center w-75 mx-auto">لە ستایلەکانەوە دیکۆرەکانی جلوبەرگ یان ئەوانی تر یان تەنها ستایلەکانی خۆت پۆست بکە کە حەزت لێیە</h5>
+                            <button class="expolore position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto">بگەڕێ</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="h-100" id="section3">
+            <div class="row h-100">
+                <div class="col col-12 col-md-6 d-flex align-items-center">
+                    <div class="container position-relative">
+                        <h2 class="text-center mb-3 text-white">دروستی بکە، سەیڤ بکە , بڵاوی بکەرەوە</h2>
+                            <h5 class="text-center w-75 mx-auto text-white">ستایلێکی سەرسوڕهێنەر دروست بکە و بەشی بکە , یان بیرۆکە لە کەسانی تر وەربگرە</h5>
+                            <button class="expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</button>
+                    </div>
+                </div>
+                <div class="col col-12 col-md-6"></div>
+            </div>
+        </section>
     </div>
     <?php include("./layout/links.php") ?>
-    
+
 </body>
 
 </html>

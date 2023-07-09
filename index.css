@@ -1,7 +1,11 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 @font-face {
     font-family: peshang;
-    src: url("Peshang_Des_5_Bold.ttf");
+    src: url("./fonts/Peshang_Des_5_Bold.ttf");
+}
+
+* {
+    scroll-behavior: smooth;
 }
 
 .container-fluid {
@@ -49,12 +53,22 @@ section nav.navbar form button {
     color: #121212;
 }
 
+.links ul li a {
+    color: #121212;
+}
+
 .container-fluid section:first-child footer {
     height: 30px;
     position: absolute;
     top: calc(100% - 30px);
     background-color: #2D3A3A;
     color: whitesmoke;
+    z-index: 3;
+}
+
+.container-fluid section:first-child footer a {
+    color: whitesmoke;
+    text-decoration: none;
 }
 
 .dots {
@@ -102,6 +116,8 @@ section nav.navbar form button {
     width: 200px;
     height: 100%;
     margin: 0 auto;
+    transition: 1s;
+    margin-bottom: 10px;
 }
 
 .image-container .left .image img,
@@ -121,6 +137,27 @@ section nav.navbar form button {
     transform: scale(1.1);
 }
 
+#section2 {
+    background-color: #fefae0;
+}
+
+.container.images img {
+    position: relative;
+}
+
+.container.images img:nth-child(1) {
+    left: 40px;
+    top: 20px;
+}
+
+.container.images img:nth-child(1) {
+    left: 100px;
+}
+
+.container.images img:nth-child(1) {
+    left: 80px;
+}
+
 @keyframes animate {
     0% {
         transform: translateY(-15px);
@@ -136,5 +173,62 @@ section nav.navbar form button {
 @media(max-width:600px) {
     .links {
         display: none;
+    }
+    section nav.navbar,
+    section nav.navbar form button {
+        font-size: 0.8rem;
+    }
+    .image-container {
+        display: block !important;
+        top: 45%;
+    }
+    .image-container .image {
+        width: 100px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .image-container .left .image img,
+    .image-container .right .image img {
+        border-radius: 15px !important;
+    }
+}
+
+.expolore,
+.expolore2 {
+    background-color: #ddbea9;
+    border-radius: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.expolore2 {
+    background-color: rgb(255, 30, 244);
+}
+
+#section3 .row .col:first-child {
+    background: linear-gradient(45deg, #ff78bc, pink);
+}
+
+#section3 .row .col:nth-child(2) {
+    background: url("https://i.pinimg.com/564x/74/f6/79/74f679b90019f309a4fc56fd77f6f231.jpg");
+    background-position: center;
+}
+
+@media(max-width:900px) {
+    .image-container {
+        display: block !important;
+        top: 45%;
+    }
+    .image-container .image {
+        width: 100px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .image-container .left .image img,
+    .image-container .right .image img {
+        border-radius: 15px !important;
+    }
+    .container.images img {
+        width: 100px;
     }
 }
