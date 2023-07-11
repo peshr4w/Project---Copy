@@ -13,6 +13,10 @@ const animator = setInterval(() => {
     i++
 }, 4000)
 
+$("#register").submit((e) => {
+    e.preventDefault();
+})
+
 function random() {
     let rand = Math.floor(Math.random() * texts.length);
     $(".changing_text").html(texts[rand])
@@ -75,4 +79,62 @@ const animateImage = setInterval(() => {
         opacity: 1,
         transform: 'scale(1.05)'
     })
-}, 5000)
+}, 5000);
+$('#signupForm').submit(function(e) {
+    e.preventDefault();
+    let username = $("#signup_username").val();
+    let email = $("#signup_email").val();
+    let password1 = $("#signup_password").val();
+    let password2 = $("#signup_repassword").val();
+
+
+    $.ajax({
+        type: "post",
+        url: "./php/signup.php",
+        data: { username, email, password1, password2 },
+        success: function(res) {
+            if (res == "success") {
+                $("#signup-result").css("color", 'green')
+                $("#signup-result").html("سەرکەوتوو بوو")
+                $('#signupBtn').attr('disabled')
+                setTimeout(() => {
+                    window.location.href = "home.php"
+                }, 1000)
+            } else {
+                $("#signup-result").html(res)
+            }
+
+        },
+        error: function(err) {
+            console.log(err)
+        }
+    });
+});
+$('#loginForm').submit(function(e) {
+    e.preventDefault();
+    let username = $("#login_username").val();
+    let password = $("#login_password").val();
+
+
+    $.ajax({
+        type: "post",
+        url: "./php/login.php",
+        data: { username, password },
+        success: function(res) {
+            if (res == "success") {
+                $("#login-result").css("color", 'green')
+                $("#login-result").html("سەرکەوتوو بوو")
+                setTimeout(() => {
+                    window.location.href = "home.php"
+                }, 1000)
+                $('#loginBtn').attr('disabled')
+            } else {
+                $("#login-result").html(res)
+            }
+
+        },
+        error: function(err) {
+            console.log(err)
+        }
+    });
+});

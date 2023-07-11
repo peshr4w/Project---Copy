@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header('Location:home.php');
+}
+?>
 <html lang="en">
 
 <head>
@@ -7,6 +13,7 @@
 </head>
 
 <body>
+    <?php include('./layout/registerForm.php')  ?>
     <div class="container-fluid p-0 w-100">
         <section class="h-100 bg-light" id="section1">
             <nav class="navbar py-3">
@@ -20,9 +27,9 @@
                                 <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">بزنس</bdo> </a></li>
                             </ul>
                         </nav>
-                        <form class="d-flex">
-                            <button class="btn btn-sm rounded rounded-5 border-0 p-2 px-3" id="loginBtn"><bdo dir="rtl">چونە ژورەوە</bdo></button>
-                            <button class="btn btn-sm btn-secondary ms-2 rounded rounded-5 border-0 text-black p-2 px-3" id="signupBtn"><bdo dir="rtl">خۆت تۆمار بکە</bdo></button>
+                        <form class="d-flex" id="register">
+                            <button class="btn btn-sm rounded rounded-5 border-0 p-2 px-3 loginBtnn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle1"><bdo dir="rtl">چونە ژورەوە</bdo></button>
+                            <button class="btn btn-sm btn-secondary ms-2 rounded rounded-5 border-0 text-black p-2 px-3 signupBtnn" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2"><bdo dir="rtl">خۆت تۆمار بکە</bdo></button>
                         </form>
                     </div>
                 </div>
@@ -89,8 +96,8 @@
                 <div class="col col-12 col-md-6 d-flex align-items-center">
                     <div class="container position-relative">
                         <h2 class="text-center mb-3 text-white">دروستی بکە، سەیڤ بکە , بڵاوی بکەرەوە</h2>
-                            <h5 class="text-center w-75 mx-auto text-white">ستایلێکی سەرسوڕهێنەر دروست بکە و بەشی بکە , یان بیرۆکە لە کەسانی تر وەربگرە</h5>
-                            <button class="expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</button>
+                        <h5 class="text-center w-75 mx-auto text-white">ستایلێکی سەرسوڕهێنەر دروست بکە و بەشی بکە , یان بیرۆکە لە کەسانی تر وەربگرە</h5>
+                        <button class="expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</button>
                     </div>
                 </div>
                 <div class="col col-12 col-md-6"></div>

@@ -6,6 +6,11 @@
 
 * {
     scroll-behavior: smooth;
+    font-family: peshang;
+}
+
+body {
+    position: relative;
 }
 
 .container-fluid {
@@ -34,18 +39,18 @@ section nav.navbar form button {
     font-size: 1rem;
 }
 
-#loginBtn {
+.loginBtnn {
     background-color: #2D3A3A;
     color: #FCFFFC;
 }
 
-#signupBtn {
-    background-color: #FCFFFC;
+.signupBtnn {
+    background-color: #FCFFFC !important;
     color: #2D3A3A;
 }
 
-#loginBtn:hover,
-#signupBtn:hover {
+.loginBtnn:hover,
+.signupBtnn:hover {
     opacity: 0.6;
 }
 
@@ -231,4 +236,31 @@ section nav.navbar form button {
     .container.images img {
         width: 100px;
     }
+}
+
+.register-form {
+    z-index: 100;
+}
+
+input:focus,
+button:focus {
+    box-shadow: none !important;
+}
+
+.loginBtn {
+    background-color: #2D3A3A !important;
+    color: whitesmoke;
+}
+
+.modal input:focus {
+    border: 1px solid #2D3A3A !important;
+}
+
+.modal button {
+    transition: 0.1s;
+}
+
+.modal button:hover {
+    background-color: #2D3A3A !important;
+    color: whitesmoke !important;
 }
