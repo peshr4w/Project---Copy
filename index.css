@@ -7,6 +7,7 @@
 * {
     scroll-behavior: smooth;
     font-family: peshang;
+    box-sizing: border-box;
 }
 
 body {
@@ -39,9 +40,52 @@ section nav.navbar form button {
     font-size: 1rem;
 }
 
+.navbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 100;
+}
+
 .loginBtnn {
     background-color: #2D3A3A;
     color: #FCFFFC;
+}
+
+.logout {
+    width: 100%;
+    height: 100dvh;
+    left: 0;
+    top: 0;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0 0 0/10%);
+    transform-origin: center;
+    display: none;
+}
+
+.logout .logout-form {
+    margin-top: 200px;
+}
+
+.an {
+    animation: an 0.5s cubic-bezier(.27, .31, .56, 1.38);
+}
+
+@keyframes an {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.logout .logout-form .btns .btn:nth-child(1) {
+    background: #2D3A3A !important;
+    color: whitesmoke;
 }
 
 .signupBtnn {
@@ -51,7 +95,13 @@ section nav.navbar form button {
 
 .loginBtnn:hover,
 .signupBtnn:hover {
+    background-color: #2D3A3A;
     opacity: 0.6;
+}
+
+.loginBtnn:hover {
+    background-color: #2D3A3A !important;
+    color: whitesmoke !important;
 }
 
 .links ul li a {
@@ -175,29 +225,6 @@ section nav.navbar form button {
     }
 }
 
-@media(max-width:600px) {
-    .links {
-        display: none;
-    }
-    section nav.navbar,
-    section nav.navbar form button {
-        font-size: 0.8rem;
-    }
-    .image-container {
-        display: block !important;
-        top: 45%;
-    }
-    .image-container .image {
-        width: 100px;
-        height: 100%;
-        margin: 0 auto;
-    }
-    .image-container .left .image img,
-    .image-container .right .image img {
-        border-radius: 15px !important;
-    }
-}
-
 .expolore,
 .expolore2 {
     background-color: #ddbea9;
@@ -217,25 +244,6 @@ section nav.navbar form button {
 #section3 .row .col:nth-child(2) {
     background: url("https://i.pinimg.com/564x/74/f6/79/74f679b90019f309a4fc56fd77f6f231.jpg");
     background-position: center;
-}
-
-@media(max-width:900px) {
-    .image-container {
-        display: block !important;
-        top: 45%;
-    }
-    .image-container .image {
-        width: 100px;
-        height: 100%;
-        margin: 0 auto;
-    }
-    .image-container .left .image img,
-    .image-container .right .image img {
-        border-radius: 15px !important;
-    }
-    .container.images img {
-        width: 100px;
-    }
 }
 
 .register-form {
@@ -263,4 +271,290 @@ button:focus {
 .modal button:hover {
     background-color: #2D3A3A !important;
     color: whitesmoke !important;
+}
+
+.search i {
+    left: 25px;
+    top: 50%;
+    left: 35px;
+    color: #2D3A3A;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.search #search:focus {
+    border: 1px solid #2D3A3A !important;
+    box-sizing: border-box !important;
+}
+
+.search .search-result {
+    width: 95%;
+    top: 170%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.profile .account {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.profile .account:hover {
+    outline-offset: 3px;
+    outline: 1px solid red;
+}
+
+.profile .create button {
+    background-color: #2D3A3A;
+    color: whitesmoke !important;
+}
+
+.profile .create button:hover {
+    opacity: 0.8;
+    color: whitesmoke !important;
+    background-color: #2D3A3A !important;
+}
+
+.profile .menu .bars {
+    font-size: 20px;
+}
+
+.profile .menu .bars:hover {
+    background: transparent !important;
+}
+
+.profile .menu:active a i {
+    opacity: 0.5 !important;
+}
+
+.navbar .dropdown {
+    width: 30%;
+    top: 100%;
+    right: 20px;
+    transition: 1s;
+    position: absolute;
+    box-shadow: 0 0 10px rgba(0 0 0 /10%);
+}
+
+.navbar .dropdown :hover {
+    background: whitesmoke;
+}
+
+.hidden {
+    display: none;
+}
+
+.display {
+    display: block;
+}
+
+.navbar .dropdown .profile .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.profile-page .image {
+    width: 120px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.follow button,
+.follow button {
+    outline: none !important;
+    border: none !important;
+    cursor: pointer;
+}
+
+.follow button:hover,
+.follow button:active {
+    outline: none !important;
+    border: none !important;
+}
+
+.share a {
+    background-color: whitesmoke !important;
+}
+
+.share a:hover,
+.share a:active {
+    background: #2D3A3A !important;
+    color: whitesmoke;
+}
+
+#logout:hover,
+#logout:hover>* {
+    background-color: red !important;
+    color: whitesmoke !important;
+    transition: 0.1s;
+}
+
+.profile-footer {
+    position: sticky;
+    top: 70px;
+    background-color: white !important;
+    width: 100%;
+    z-index: 10;
+}
+
+.profile-footer .btns button {
+    border: 0;
+    outline: 0;
+    position: relative;
+}
+
+.psotUsername:hover {
+    text-decoration: underline;
+}
+
+.profile-footer .btns button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: #2D3A3A;
+    border-radius: 5px;
+    opacity: 0;
+}
+
+.profile-footer .btns button:hover {
+    background-color: whitesmoke;
+}
+
+.profile-footer .btns button:hover::after {
+    opacity: 1;
+}
+
+.profile-footer-content .show {
+    display: block;
+}
+
+.profile-footer-content .hide {
+    display: none;
+}
+
+.posts {
+    column-count: 5;
+}
+
+.posts .card {
+    break-inside: avoid;
+}
+
+.posts .card .user-img {
+    width: 40px;
+}
+
+.posts .card .user:hover .username {
+    text-decoration: underline;
+}
+
+.card .post-image {
+    min-height: 100px !important;
+}
+
+.warning {
+    left: 95%;
+    top: -5px;
+    background-color: red;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(-15px);
+    }
+}
+
+@media(max-width:900px) {
+    .image-container {
+        display: block !important;
+        top: 45%;
+    }
+    .image-container .image {
+        width: 100px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .image-container .left .image img,
+    .image-container .right .image img {
+        border-radius: 15px !important;
+    }
+    .container.images img {
+        width: 100px;
+    }
+    .create {
+        display: none;
+    }
+    .navbar .dropdown {
+        width: 50%;
+    }
+    .profile-page .image {
+        width: 100px
+    }
+    .search .search-result {
+        width: 100%;
+    }
+    .posts {
+        column-count: 3;
+    }
+}
+
+@media(max-width:600px) {
+    .links {
+        display: none;
+    }
+    section nav.navbar,
+    section nav.navbar form button {
+        font-size: 0.8rem;
+    }
+    .image-container {
+        display: block !important;
+        top: 45%;
+    }
+    .image-container .image {
+        width: 100px;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .image-container .left .image img,
+    .image-container .right .image img {
+        border-radius: 15px !important;
+    }
+    .navbar .brand a .text {
+        display: none;
+    }
+    .account {
+        display: none;
+    }
+    .navbar .dropdown {
+        width: 80%;
+    }
+    .posts {
+        column-count: 2;
+    }
+    .card .user-img {
+        width: 30px;
+        height: 30px;
+    }
+    .profile .details span {
+        font-size: 14px;
+    }
+    .logout .logout-form {
+        width: 90% !important;
+    }
 }

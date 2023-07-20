@@ -8,15 +8,15 @@
       <form class="modal-body" id="loginForm">
         <div class="form-group mb-3" dir="rtl">
           <label for="text" class="mb-1"><bdo dir="rtl">ناوی بەکارهێنەر</bdo></label>
-          <input type="text" id="login_username" class="form-control rounded rounded-4 py-2">
+          <input type="text" id="login_username" name="login_username" class="form-control rounded rounded-4 py-2">
         </div>
         <div class="form-group mb-3" dir="rtl">
           <label for="password" class="mb-1"><bdo dir="rtl">وشەی نهێنی</bdo></label>
-          <input type="password" id="login_password" class="form-control rounded rounded-4 py-2">
+          <input type="password" id="login_password" name="login_password" class="form-control rounded rounded-4 py-2">
         </div>
         <div class="input-group d-fex align-items-center justify-content-between" dir="rtl">
           <button class="btn btn-sm btn-outline-primary rounded rounded-4 border-0 loginBtnn" id="loginBtn"><bdo dir="rtl">چونه‌ ژووره‌وه‌</bdo></button>
-          <small id="login-result"  class="text-danger"><bdo dir="rtl"></bdo></small>
+          <small  class="text-danger"><bdo dir="rtl" id="login-result" ></bdo></small>
         </div>
       </form>
       <div class="modal-footer border-0">
@@ -51,7 +51,7 @@
         </div>
         <div class="input-group d-fex align-items-center justify-content-between" dir="rtl">
           <button class="btn btn-sm btn-outline-primary rounded rounded-4 border-0 loginBtnn" id="signupBtn"><bdo dir="rtl">تۆمار كردن</bdo></button>
-          <small id="signup-result" class="text-danger"><bdo dir="rtl"></bdo></small>
+          <small class="text-danger"><bdo dir="rtl" id="signup-result"></bdo></small>
         </div>
       </form>
       <div class="modal-footer border-0">

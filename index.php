@@ -9,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
 
 <head>
     <?php include("./layout/head.php") ?>
-    <title>Document</title>
+    <title>Register</title>
 </head>
 
 <body>
@@ -86,7 +86,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="container position-relative">
                         <h2 class="text-center mb-3 ">بەدوای هەر شتێکدا بگەڕێ کە دەتەوێت</h1>
                             <h5 class="text-center w-75 mx-auto">لە ستایلەکانەوە دیکۆرەکانی جلوبەرگ یان ئەوانی تر یان تەنها ستایلەکانی خۆت پۆست بکە کە حەزت لێیە</h5>
-                            <button class="expolore position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto">بگەڕێ</button>
+                            <a href="home.php" class="btn expolore position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto">بگەڕێ</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@ if (isset($_SESSION['user_id'])) {
                     <div class="container position-relative">
                         <h2 class="text-center mb-3 text-white">دروستی بکە، سەیڤ بکە , بڵاوی بکەرەوە</h2>
                         <h5 class="text-center w-75 mx-auto text-white">ستایلێکی سەرسوڕهێنەر دروست بکە و بەشی بکە , یان بیرۆکە لە کەسانی تر وەربگرە</h5>
-                        <button class="expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</button>
+                        <a href="home.php" class="btn expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</a>
                     </div>
                 </div>
                 <div class="col col-12 col-md-6"></div>
