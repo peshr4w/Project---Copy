@@ -16,6 +16,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
+    <?php include("./layout/logoutForm.php"); ?>
     <?php include("./layout/navbar.php") ?>
     <?php
     $session_id = $_SESSION['user_id'];

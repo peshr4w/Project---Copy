@@ -12,13 +12,15 @@ if (!isset($_SESSION['user_id'])) {
     <?php include("./php/conf.php") ?>
     <?php
     $user_id = $_SESSION['user_id'];
-    $profile = $conn->query("select * from users where session_id = '$user_id'");
+    $id = $_GET['id'];
+    $profile = $conn->query("select * from users where id = '$id'");
     $row = $profile->fetch_assoc();
     ?>
     <title><?= $row['username'] ?></title>
 </head>
 
 <body>
+    <?php include("./layout/logoutForm.php"); ?>
     <?php include("./layout/navbar.php") ?>
     <div class="container profile-page">
         <div class="row  mt-3 p-5">
@@ -37,12 +39,14 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="share d-flex">
                     <a href="#" class="btn rounded rounded-4 ms-2" id="share">Share</a>
+                    <?php if($user_id == $row['session_id']){ ?>
                     <a href="#" class="btn d-flex rounded rounded-4 ms-2">Edit profile </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
-    <div class="profile-footer bg-white">
+    <div class="profile-footer bg-white py-3">
         <div class="btns text-center">
             <button class="btn" id="liked">Liked</button>
             <button class="btn" id="created">Created</button>

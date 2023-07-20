@@ -13,16 +13,7 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-<div class="logout position-fixed top-0 left-0">
-    <div class="logout-form rounded bg-white rounded-4 text-center p-3 shadow mx-auto w-25 ">
-        <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
-        <h4 class="mb-4"><bdo dir="rtl">دڵنیای لە چوونە دەرەوە ؟</bdo></h4>
-        <div class="btns">
-            <button class="btn rounded rounded-4" id="no"><bdo dir="rtl">نەخێر</bdo></button>
-            <button class="btn btn-primary rounded rounded-4 ms-2" id="yes"><bdo dir="rtl">بەڵێ</bdo></button>
-        </div>
-    </div>
-</div>
+    <?php include("./layout/logoutForm.php"); ?>
     <?php
     include("./layout/navbar.php");
     include("./php/conf.php");
@@ -37,16 +28,20 @@ if (!isset($_SESSION['user_id'])) {
             $users_row = $users->fetch_assoc();
         ?>
             <div class="card mb-2 border-0">
-                <a href="#" class="post-image">
-                <img src="<?= 'images/' .  $row['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                <a href="<?= 'post.php?id='.$row['id'] ?>" class="post-image position-relative">
+                    <div class="layer position-absolute w-100 h-100 top-0 left-0 rounded-4 p-3 opacity-0">
+                        <button class="btn border-0 rounded-4"><i class="bi bi-heart-fill"></i></button>
+                        <button class="btn border-0 rounded-4"><i class="bi bi-download"></i></button>
+                        <button class="btn border-0 rounded-4"><i class="bi bi-share-fill"></i></button>
+                    </div>
+                    <img src="<?= 'images/' .  $row['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
                 </a>
-
                 <p class="card-title ms-2 mt-2"><?= $row['title'] ?></p>
-                <a href="<?= 'profile.php?id='.$users_row['id'] ?>" class="d-flex align-items-center text-decoration-none text-black px-2 user">
-                <div class="user-img">
-                <img src="<?= 'images/' . $users_row['image'] ?>" width="100%" class="rounded-circle">
-                </div>
-                <span class="ms-2 username"><?= $users_row['username'] ?></span>
+                <a href="<?= 'profile.php?id=' . $users_row['id'] ?>" class="d-flex align-items-center text-decoration-none text-black px-2 user">
+                    <div class="user-img">
+                        <img src="<?= 'images/' . $users_row['image'] ?>" width="100%" class="rounded-circle">
+                    </div>
+                    <span class="ms-2 username"><?= $users_row['username'] ?></span>
                 </a>
             </div>
 

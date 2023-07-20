@@ -83,6 +83,19 @@ section nav.navbar form button {
     }
 }
 
+.op {
+    animation: op 0.1s linear;
+}
+
+@keyframes op {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .logout .logout-form .btns .btn:nth-child(1) {
     background: #2D3A3A !important;
     color: whitesmoke;
@@ -462,6 +475,34 @@ button:focus {
     min-height: 100px !important;
 }
 
+.card .post-image .layer {
+    transition: 0.1s;
+    background-color: rgba(0 0 0 /20%);
+}
+
+.card .post-image:hover .layer {
+    opacity: 1 !important;
+}
+
+.card .post-image .layer .btn:nth-child(1) {
+    background-color: red !important;
+    color: white;
+}
+
+.card .post-image .layer .btn:nth-child(2) {
+    background-color: white !important;
+    color: black;
+}
+
+.card .post-image .layer .btn:nth-child(3) {
+    background-color: whitesmoke !important;
+    color: black;
+}
+
+.card .post-image .layer .btn:hover {
+    transform: scale(0.95) !important;
+}
+
 .warning {
     left: 95%;
     top: -5px;
@@ -511,6 +552,9 @@ button:focus {
     }
     .posts {
         column-count: 3;
+    }
+    .logout .logout-form {
+        width: 50% !important;
     }
 }
 

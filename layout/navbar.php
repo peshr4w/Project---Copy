@@ -2,7 +2,7 @@
 $user_id = $_SESSION['user_id'];
 include('./php/conf.php');
 $profile = $conn->query("select * from users where session_id = '$user_id'");
-$row = $profile->fetch_assoc();
+$row1 = $profile->fetch_assoc();
 ?>
 <div class="navbar  bg-white px-4 py-3 ">
     <div class="brand col-2 d-flex">
@@ -23,8 +23,8 @@ $row = $profile->fetch_assoc();
             <button class="btn btn-sm rounded rounded-4 border-none outline-none"><bdo dir="rtl">دروستکردن</bdo></button>
         </a>
         <div class="account">
-            <a href="<?= 'profile.php?id=' . $row['id'] ?>">
-                <img src="<?= 'images/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
+            <a href="<?= 'profile.php?id=' . $row1['id'] ?>">
+                <img src="<?= 'images/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
             </a>
         </div>
         <div class="menu position-relative">
@@ -34,18 +34,18 @@ $row = $profile->fetch_assoc();
     <div class="dropdown hidden position-absolute border p-3 bg-white rounded rounded-4">
         <div class="profile d-flex align-items-center rounded rounded-4 p-1">
             <div class="image">
-                <img src="<?= 'images/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
+                <img src="<?= 'images/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
             </div>
             <div class="details ms-2 d-flex flex-column">
-                <span> <?= $row['username'] ?></span>
-                <span><?= $row['email'] ?></span>
+                <span> <?= $row1['username'] ?></span>
+                <span><?= $row1['email'] ?></span>
             </div>
             <i class="fa-solid fa-check ms-auto me-3 "></i>
         </div>
         <a href="home.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-house me-1"></i><bdo dir="rtl">ماڵەوە</bdo>
         </a>
-        <a href="<?= 'profile.php?id=' . $row['id'] ?>" class="btn settings p-2 border rounded rounded-4 mt-3 ms-1">
+        <a href="<?= 'profile.php?id=' . $row1['id'] ?>" class="btn settings p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-person-fill me-1"></i><bdo dir="rtl">پرۆفایل</bdo>
         </a>
         <a href="create.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">

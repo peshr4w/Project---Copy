@@ -1,4 +1,3 @@
-$(".logout").hide();
 $("#search").on({
     focus: () => {
         $(".search-result").show();
@@ -11,9 +10,11 @@ $(".bars").click(() => {
     if ($(".navbar .dropdown").hasClass("hidden")) {
         $(".navbar .dropdown").addClass("display");
         $(".navbar .dropdown").removeClass("hidden");
+        $(".navbar .dropdown").addClass("op");
     } else {
         $(".navbar .dropdown").removeClass("display");
         $(".navbar .dropdown").addClass("hidden");
+        $(".navbar .dropdown").removeClass("op");
     }
 });
 $("#share").click(() => {
