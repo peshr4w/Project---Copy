@@ -36,13 +36,13 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <p class="mt-2 mb-2">This is a bio text</p>
                 <div class="follow d-flex mb-3">
-                    <button class="btn d-flex"><span class="me-1">20</span>Following </button>
-                    <button class="btn d-flex"><span class="me-1">10</span> Followers </button>
+                    <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo><span class="ms-1">20</span></button>
+                    <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo><span class="ms-1">10</span> </button>
                 </div>
                 <div class="share d-flex">
-                    <a href="#" class="btn rounded rounded-4 ms-2" id="share">Share</a>
+                    <a href="#" class="btn rounded rounded-4 ms-2" id="share"><bdo dir="rtl">بڵاوکردنەوە</bdo></a>
                     <?php if ($user_id == $row['session_id']) { ?>
-                        <a href="#" class="btn d-flex rounded rounded-4 ms-2">Edit profile </a>
+                        <a href="#" class="btn d-flex rounded rounded-4 ms-2"><bdo dir="rtl">دەستکاریکردن</bdo> </a>
                     <?php } ?>
                 </div>
             </div>
