@@ -417,6 +417,7 @@ button:focus {
     z-index: 10;
 }
 
+.profile-footer .btns button.bg,
 .profile-footer .btns button {
     border: 0;
     outline: 0;
@@ -427,7 +428,7 @@ button:focus {
     text-decoration: underline;
 }
 
-.profile-footer .btns button::after {
+.profile-footer .btns button.bg::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -436,10 +437,10 @@ button:focus {
     height: 10%;
     background: #2D3A3A;
     border-radius: 5px;
-    opacity: 0;
 }
 
-.profile-footer .btns button:hover {
+.profile-footer .btns button:hover,
+.profile-footer .btns button.bg {
     background-color: whitesmoke;
 }
 
@@ -447,11 +448,11 @@ button:focus {
     opacity: 1;
 }
 
-.profile-footer-content .show {
+.show {
     display: block;
 }
 
-.profile-footer-content .hide {
+.hide {
     display: none;
 }
 
@@ -473,33 +474,42 @@ button:focus {
 
 .card .post-image {
     min-height: 100px !important;
+    z-index: 1;
 }
 
 .card .post-image .layer {
-    transition: 0.1s;
     background-color: rgba(0 0 0 /20%);
 }
 
 .card .post-image:hover .layer {
+    opacity: 1;
+}
+
+.card .layer {
+    transition: 0.1s;
+    z-index: 2;
+}
+
+.card:hover .layer {
     opacity: 1 !important;
 }
 
-.card .post-image .layer .btn:nth-child(1) {
+.card .layer .btn:nth-child(1) {
     background-color: red !important;
     color: white;
 }
 
-.card .post-image .layer .btn:nth-child(2) {
+.card .layer .btn:nth-child(2) {
     background-color: white !important;
     color: black;
 }
 
-.card .post-image .layer .btn:nth-child(3) {
+.card .layer .btn:nth-child(3) {
     background-color: whitesmoke !important;
     color: black;
 }
 
-.card .post-image .layer .btn:hover {
+.card .layer .btn:hover {
     transform: scale(0.95) !important;
 }
 
@@ -507,6 +517,10 @@ button:focus {
     left: 95%;
     top: -5px;
     background-color: red;
+}
+
+.profile-footer-content {
+    height: auto;
 }
 
 @keyframes animate {
@@ -550,7 +564,9 @@ button:focus {
     .search .search-result {
         width: 100%;
     }
-    .posts {
+    .posts,
+    .liked-posts,
+    .created-posts {
         column-count: 3;
     }
     .logout .logout-form {
@@ -588,7 +604,9 @@ button:focus {
     .navbar .dropdown {
         width: 80%;
     }
-    .posts {
+    .posts,
+    .liked-posts,
+    .created-posts {
         column-count: 2;
     }
     .card .user-img {

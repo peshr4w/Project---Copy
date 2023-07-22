@@ -27,13 +27,29 @@ if (!isset($_SESSION['user_id'])) {
             $users = $conn->query("select * from users where id = '$id'");
             $users_row = $users->fetch_assoc();
         ?>
-            <div class="card mb-2 border-0">
-                <a href="<?= 'post.php?id='.$row['id'] ?>" class="post-image position-relative">
-                    <div class="layer position-absolute w-100 h-100 top-0 left-0 rounded-4 p-3 opacity-0">
-                        <button class="btn border-0 rounded-4"><i class="bi bi-heart-fill"></i></button>
-                        <button class="btn border-0 rounded-4"><i class="bi bi-download"></i></button>
-                        <button class="btn border-0 rounded-4"><i class="bi bi-share-fill"></i></button>
+            <div class="card mb-2 border-0  position-relative d-flex ">
+                <div class="layer position-absolute  rounded-4 p-3 opacity-0 align-self-end">
+                    <div class="">
+                        <?php 
+                        $sid = $_SESSION['user_id'];
+                        $pid = $row['id'];
+                        $usrid = $conn->query("select id from users where session_id = '$sid' ")->fetch_column();
+                        $likes = $conn->query("select post_id from likes where user_id = '$usrid' and post_id = '$pid' ");
+                          if($likes->num_rows > 0){
+                            $class = "bi-heart-fill";
+                          }else{
+                            $class = "bi-heart";
+                          }
+                         ?>
+                        <button class="btn border-0 rounded-4 likePost" value="<?= $row['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
+                        <a href="<?= 'images/' .  $row['image'] ?>" download class="btn border-0 rounded-4 ms-1"><i class="bi bi-download"></i></a>
+                        <button class="btn border-0 rounded-4 ms-1 sharePost" onclick="sharePost(<?= $row['id'] ?>)"><i class="bi bi-share-fill"></i></button>
                     </div>
+                </div>
+                <a href="<?= 'post.php?id=' . $row['id'] ?>" class="post-image position-relative">
+                <div class="layer position-absolute  rounded-4 p-3 w-100 h-100 opacity-0">
+                    
+                </div>
                     <img src="<?= 'images/' .  $row['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
                 </a>
                 <p class="card-title ms-2 mt-2"><?= $row['title'] ?></p>
@@ -47,6 +63,11 @@ if (!isset($_SESSION['user_id'])) {
 
         <?php } ?>
     </div>
+     <?php 
+     $session_id = $_SESSION['user_id'];
+     $user_id = $conn->query("select id from users where session_id = '$session_id'")->fetch_column();
+     ?>
+     <input type="hidden" value="<?= $user_id ?>" id="userId">
     <script src="js/home.js"></script>
 </body>
 

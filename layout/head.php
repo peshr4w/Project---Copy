@@ -4,4 +4,3 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/fd93baf7b6.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="./index.css">
-<script src="https://cdn.tailwindcss.com"></script>
