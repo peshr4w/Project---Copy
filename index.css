@@ -375,6 +375,7 @@ button:focus {
 
 .profile-page .image {
     width: 120px;
+    height: 120px;
     border-radius: 100%;
     overflow: hidden;
 }
@@ -523,6 +524,27 @@ button:focus {
     height: auto;
 }
 
+.deletePost .delete-form {
+    z-index: 200;
+}
+
+.deletePost {
+    display: none;
+    z-index: 200;
+    background-color: rgba(0 0 0 /10%);
+}
+
+.deletePost .delete-form {
+    margin-top: 200px;
+}
+
+.noposts {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @keyframes animate {
     0% {
         transform: translateY(-15px);
@@ -559,7 +581,8 @@ button:focus {
         width: 50%;
     }
     .profile-page .image {
-        width: 100px
+        width: 100px;
+        height: 100px;
     }
     .search .search-result {
         width: 100%;
@@ -570,6 +593,9 @@ button:focus {
         column-count: 3;
     }
     .logout .logout-form {
+        width: 50% !important;
+    }
+    .deletePost .delete-form {
         width: 50% !important;
     }
 }
@@ -617,6 +643,9 @@ button:focus {
         font-size: 14px;
     }
     .logout .logout-form {
+        width: 90% !important;
+    }
+    .deletePost .delete-form {
         width: 90% !important;
     }
 }

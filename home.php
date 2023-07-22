@@ -27,7 +27,7 @@ if (!isset($_SESSION['user_id'])) {
             $users = $conn->query("select * from users where id = '$id'");
             $users_row = $users->fetch_assoc();
         ?>
-            <div class="card mb-2 border-0  position-relative d-flex ">
+            <div class="card mb-4 border-0  position-relative d-flex ">
                 <div class="layer position-absolute  rounded-4 p-3 opacity-0 align-self-end">
                     <div class="">
                         <?php 

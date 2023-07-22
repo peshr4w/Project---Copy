@@ -106,23 +106,6 @@ $.each(likeBtns, function(i) {
     });
 
 });
-let deleteBtns = $(".card .deleteBtn");
-$.each(deleteBtns, () => {
-    let deleteBtn = $(this)[0];
-    $(deleteBtn).click(() => {
-        console.log(deleteBtn)
-        $.ajax({
-            type: "get",
-            url: "php/deletePost.php",
-            data: { postId: post_id },
-            dataType: "dataType",
-            success: function(res) {
-                console.log(res)
-            }
-        });
-    });
-});
-
 
 function sharePost(id) {
     let url = "post.php?id=" + id;
@@ -137,4 +120,27 @@ function sharePost(id) {
             })
             .catch(err => console.log(err))
     }
-}
+};
+
+function deletePost(id, p) {
+    $(".deletePost").show();
+    $(".delete-form").addClass("an");
+    $("#postId").html(id);
+    $("#deletePost").click(() => {
+        $.ajax({
+            type: "get",
+            url: "php/deletePost.php",
+            data: { postId: id },
+            success: function(res) {
+                $(".deletePost").hide();
+            }
+        });
+    });
+    $("#cancelDelete").click(() => {
+        $(".deletePost").hide();
+    })
+
+};
+$(".delete-form .btn-close").click(() => {
+    $(".deletePost").hide();
+});
