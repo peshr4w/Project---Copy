@@ -636,8 +636,10 @@ button:focus {
         column-count: 2;
     }
     .card .user-img {
-        width: 30px;
-        height: 30px;
+        width: 30px !important;
+        height: 30px !important;
+        overflow: hidden !important;
+        border-radius: 100%;
     }
     .profile .details span {
         font-size: 14px;

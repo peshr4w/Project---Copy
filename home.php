@@ -42,7 +42,7 @@ if (!isset($_SESSION['user_id'])) {
                           }
                          ?>
                         <button class="btn border-0 rounded-4 likePost" value="<?= $row['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
-                        <a href="<?= 'images/' .  $row['image'] ?>" download class="btn border-0 rounded-4 ms-1"><i class="bi bi-download"></i></a>
+                        <a href="<?= 'images/uploads/' .  $row['image'] ?>" download class="btn border-0 rounded-4 ms-1"><i class="bi bi-download"></i></a>
                         <button class="btn border-0 rounded-4 ms-1 sharePost" onclick="sharePost(<?= $row['id'] ?>)"><i class="bi bi-share-fill"></i></button>
                     </div>
                 </div>
@@ -50,12 +50,12 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="layer position-absolute  rounded-4 p-3 w-100 h-100 opacity-0">
                     
                 </div>
-                    <img src="<?= 'images/' .  $row['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                    <img src="<?= 'images/uploads/' .  $row['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
                 </a>
                 <p class="card-title ms-2 mt-2"><?= $row['title'] ?></p>
                 <a href="<?= 'profile.php?id=' . $users_row['id'] ?>" class="d-flex align-items-center text-decoration-none text-black px-2 user">
                     <div class="user-img">
-                        <img src="<?= 'images/' . $users_row['image'] ?>" width="100%" class="rounded-circle">
+                        <img src="<?= 'images/users/' . $users_row['image'] ?>" width="100%" >
                     </div>
                     <span class="ms-2 username"><?= $users_row['username'] ?></span>
                 </a>

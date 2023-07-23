@@ -133,6 +133,7 @@ function deletePost(id, p) {
             data: { postId: id },
             success: function(res) {
                 $(".deletePost").hide();
+                console.log(res)
             }
         });
     });
@@ -144,3 +145,33 @@ function deletePost(id, p) {
 $(".delete-form .btn-close").click(() => {
     $(".deletePost").hide();
 });
+
+function follow(userId, followerId) {
+    if ($("#followBtn").hasClass('followBtn')) {
+        $.ajax({
+            type: "get",
+            url: "php/follow.php",
+            data: { userId: userId, followerId: followerId },
+            success: function(res) {
+                console.log(res)
+                $("#followBtn").removeClass('followBtn');
+                $("#followBtn").addClass('unfollowBtn');
+                $("#followBtn").html("<bdo dir='rtl'> لابردن </bdo>");
+                $("#followerCount").html(res)
+            }
+        });
+    } else {
+        $.ajax({
+            type: "get",
+            url: "php/unFollow.php",
+            data: { userId: userId, followerId: followerId },
+            success: function(res) {
+                console.log(res)
+                $("#followBtn").addClass('followBtn');
+                $("#followBtn").removeClass('unfollowBtn');
+                $("#followBtn").html("<bdo dir='rtl'>فۆڵۆو</bdo>");
+                $("#followerCount").html(res)
+            }
+        });
+    }
+}

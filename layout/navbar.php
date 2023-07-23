@@ -24,7 +24,7 @@ $row1 = $profile->fetch_assoc();
         </a>
         <div class="account">
             <a href="<?= 'profile.php?id=' . $row1['id'] ?>">
-                <img src="<?= 'images/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
+                <img src="<?= 'images/users/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
             </a>
         </div>
         <div class="menu position-relative">
@@ -34,7 +34,7 @@ $row1 = $profile->fetch_assoc();
     <div class="dropdown hidden position-absolute border p-3 bg-white rounded rounded-4">
         <div class="profile d-flex align-items-center rounded rounded-4 p-1">
             <div class="image">
-                <img src="<?= 'images/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
+                <img src="<?= 'images/users/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
             </div>
             <div class="details ms-2 d-flex flex-column">
                 <span> <?= $row1['username'] ?></span>

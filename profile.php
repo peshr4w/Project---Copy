@@ -40,7 +40,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="row  mt-3 p-5">
             <div class=" d-flex justify-content-center flex-column align-items-center mt-4">
                 <div class="image mb-4">
-                    <img src="<?= 'images/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
+                    <img src="<?= 'images/users/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
                 </div>
                 <div class="details text-center">
                     <h4 class="username"><strong> <?= $row['username'] ?></strong></h5>
@@ -49,12 +49,35 @@ if (!isset($_SESSION['user_id'])) {
                 <p class="mt-2 mb-2">This is a bio text</p>
                 <div class="follow d-flex mb-3">
                     <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo><span class="ms-1">20</span></button>
-                    <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo><span class="ms-1">10</span> </button>
+                    <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo>
+                        <span class="ms-1" id="followerCount">
+                            <?php
+                            $uid = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
+                            $followCount = $conn->query("select count(*) from followers where user_id = 16 ")->fetch_column();
+                            echo ($followCount);
+                            ?>
+                        </span>
+                    </button>
                 </div>
                 <div class="share d-flex">
                     <a href="#" class="btn rounded rounded-4 ms-2" id="share"><bdo dir="rtl">بڵاوکردنەوە</bdo></a>
                     <?php if ($user_id == $row['session_id']) { ?>
                         <a href="#" class="btn d-flex rounded rounded-4 ms-2"><bdo dir="rtl">دەستکاریکردن</bdo> </a>
+                    <?php } else {
+                        $uuid = $row['id'];
+                        $avalable = $conn->query("select * from followers where user_id = '$uuid' and follower_id = '$uid'");
+                        if($avalable->num_rows> 0 ){
+                            $fbc = 'unfollowBtn';
+                            $fbt = "<bdo dir='rtl'> لابردن </bdo>";
+                            echo($fbc);
+                        }else{
+                            $fbc = 'followBtn';
+                            $fbt = "<bdo dir='rtl'>فۆڵۆو</bdo>";
+                            echo($fbc);
+                        }
+                    ?>
+                        <a href="#" class="btn d-flex rounded rounded-4 ms-2 <?= $fbc ?>" id="followBtn" onclick="follow(<?= $row['id'] ?>, <?= $uid ?>)">
+                        <?= $fbt  ?> </a>
                     <?php } ?>
                 </div>
             </div>
@@ -130,7 +153,7 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                         <a href="<?= 'post.php?id=' . $row2['id'] ?>" class="post-image position-relative ">
-                           <img src="<?= 'images/' .  $row2['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                            <img src="<?= 'images/uploads/' .  $row2['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
                         </a>
                         <small class="text-seconadry p-1"><?= $row2['created'] ?></small>
                         <p class="card-title ms-2 mt-2">

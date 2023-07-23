@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id'])) {
         $title = $_POST['title'];
         $description = $_POST['description'];
         $tags = $_POST['tags'];
-        if (move_uploaded_file($image_tmpname, 'images/' . $image_name)) {
+        if (move_uploaded_file($image_tmpname, 'images/uploads/' . $image_name)) {
             $conn->query("insert into posts(user_id, image, title,description, tags) values('$user_id', '$image_name' ,'$title', '$description','$tags')");
         }
     }
@@ -38,9 +38,9 @@ if (!isset($_SESSION['user_id'])) {
             <div class="col-6">
                 <div class="form-group mb-3">
                     <label for="image">
-                        <div class="card border p-5">card</div>
+                        <div class="card border p-5">Image</div>
                     </label>
-                    <input type="file" name="image" id="image" style="display: none;">
+                    <input type="file" name="image" id="image" style="display: none;" accept="image/png, image/jpg, image/jpeg, image/gif">
                 </div>
                 <div class="form-group mb-2">
                     <label for="title">Title</label>
