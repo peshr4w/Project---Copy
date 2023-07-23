@@ -48,12 +48,21 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <p class="mt-2 mb-2">This is a bio text</p>
                 <div class="follow d-flex mb-3">
-                    <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo><span class="ms-1">20</span></button>
+                    <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo>
+                        <span class="ms-1">
+                            <?php
+                            $xid = $row['id'];
+                            $followingCount = $conn->query("select count(*) from followers where follower_id = '$xid' ")->fetch_column();
+                            echo ($followingCount);
+                            ?>
+                        </span>
+                    </button>
                     <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo>
                         <span class="ms-1" id="followerCount">
                             <?php
+            
                             $uid = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
-                            $followCount = $conn->query("select count(*) from followers where user_id = 16 ")->fetch_column();
+                            $followCount = $conn->query("select count(*) from followers where user_id = '$xid' ")->fetch_column();
                             echo ($followCount);
                             ?>
                         </span>
@@ -66,18 +75,16 @@ if (!isset($_SESSION['user_id'])) {
                     <?php } else {
                         $uuid = $row['id'];
                         $avalable = $conn->query("select * from followers where user_id = '$uuid' and follower_id = '$uid'");
-                        if($avalable->num_rows> 0 ){
+                        if ($avalable->num_rows > 0) {
                             $fbc = 'unfollowBtn';
                             $fbt = "<bdo dir='rtl'> لابردن </bdo>";
-                            echo($fbc);
-                        }else{
+                        } else {
                             $fbc = 'followBtn';
                             $fbt = "<bdo dir='rtl'>فۆڵۆو</bdo>";
-                            echo($fbc);
                         }
                     ?>
                         <a href="#" class="btn d-flex rounded rounded-4 ms-2 <?= $fbc ?>" id="followBtn" onclick="follow(<?= $row['id'] ?>, <?= $uid ?>)">
-                        <?= $fbt  ?> </a>
+                            <?= $fbt  ?> </a>
                     <?php } ?>
                 </div>
             </div>
