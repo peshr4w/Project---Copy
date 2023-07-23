@@ -60,7 +60,6 @@ if (!isset($_SESSION['user_id'])) {
                     <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo>
                         <span class="ms-1" id="followerCount">
                             <?php
-            
                             $uid = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
                             $followCount = $conn->query("select count(*) from followers where user_id = '$xid' ")->fetch_column();
                             echo ($followCount);
@@ -142,7 +141,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 <?php }
             } else { ?>
-                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"><bdo dir="rtl">هیچ پۆستێک لەبەردەستدا نییە</bdo></div>
+                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"> <bdo dir="rtl">هیچ پۆستێک لایک نەکراوە❤</bdo></div>
             <?php
             } ?>
         </div>
@@ -170,7 +169,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 <?php  }
             } else { ?>
-                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"><bdo dir="rtl">هیچ پۆستێک لەبەردەستدا نییە</bdo></div>
+                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"><bdo dir="rtl">هیچ پۆستێک نەکراوە</bdo></div>
             <?php } ?>
         </div>
     </div>
