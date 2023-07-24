@@ -510,7 +510,7 @@ button:focus {
 }
 
 .card .layer .btn:nth-child(1) {
-    background-color: red !important;
+    background-color: rgb(228, 14, 14) !important;
     color: white;
 }
 
