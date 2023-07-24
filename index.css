@@ -469,6 +469,14 @@ button:focus {
 
 .posts .card .user-img {
     width: 40px;
+    height: 40px;
+}
+
+.user-img {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 100%;
 }
 
 .posts .card .user:hover .username {
@@ -480,20 +488,24 @@ button:focus {
     z-index: 1;
 }
 
-.card .post-image .layer {
+.card .post-image .layer,
+.layer2 {
     background-color: rgba(0 0 0 /20%);
 }
 
-.card .post-image:hover .layer {
+.card .post-image:hover .layer,
+.layer2 {
     opacity: 1;
 }
 
-.card .layer {
+.card .layer,
+.layer2 {
     transition: 0.1s;
     z-index: 2;
 }
 
-.card:hover .layer {
+.card:hover .layer,
+.created .layer2:hover {
     opacity: 1 !important;
 }
 
@@ -541,28 +553,28 @@ button:focus {
 }
 
 .add-bio,
-.follow-list {
+.follow-list,
+.following-list {
     z-index: 200;
     display: none;
     background-color: rgba(0 0 0 /10%);
 }
 
-.follow-list {
-    display: block;
-}
-
 .add-bio .add-bio-form,
-.follow-list .follow-list-container {
+.follow-list .follow-list-container,
+.following-list .follow-list-container {
     z-index: 200;
     margin-top: 200px;
 }
 
-.follow-list .follow-list-container {
+.follow-list .follow-list-container,
+.following-list .follow-list-container {
     margin-top: 200px;
     max-height: 400px;
 }
 
-.follow-list .follow-list-container .users-list {
+.follow-list .follow-list-container .users-list,
+.following-list .follow-list-container .users-list {
     max-height: 220px !important;
     overflow-y: scroll;
 }
@@ -732,5 +744,8 @@ button:focus {
     .add-bio .add-bio-form,
     .follow-list-container {
         width: 90% !important;
+    }
+    .sharePostBtn {
+        margin-top: 5px;
     }
 }

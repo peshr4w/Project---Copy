@@ -121,7 +121,8 @@ function sharePost(id) {
     }
 };
 
-function deletePost(id, p) {
+function deletePost(id, el) {
+
     $(".deletePost").show();
     $(".delete-form").addClass("an");
     $("#postId").html(id);
@@ -131,8 +132,8 @@ function deletePost(id, p) {
             url: "php/deletePost.php",
             data: { postId: id },
             success: function(res) {
+                $(el).parents('.card').addClass('d-none')
                 $(".deletePost").hide();
-                console.log(res)
             }
         });
     });
@@ -239,4 +240,12 @@ $("#showFollowers").click(() => {
 });
 $(".follow-list-container .btn-close").click(() => {
     $(".follow-list").hide();
+});
+
+$("#showFollowings").click(() => {
+    $(".following-list").show();
+    $(".following-list .follow-list-container").addClass("an");
+});
+$(".following-list .follow-list-container .btn-close").click(() => {
+    $(".following-list").hide();
 });

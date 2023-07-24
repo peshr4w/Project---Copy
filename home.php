@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     include("./layout/navbar.php");
     include("./php/conf.php");
     ?>
-    <div class="posts px-4 py-2">
+    <div class="posts p-3 gap-4 ">
         <?php
         $posts = $conn->query("select * from posts");
 
@@ -41,9 +41,9 @@ if (!isset($_SESSION['user_id'])) {
                             $class = "bi-heart";
                           }
                          ?>
-                        <button class="btn border-0 rounded-4 likePost" value="<?= $row['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
-                        <a href="<?= 'images/uploads/' .  $row['image'] ?>" download class="btn border-0 rounded-4 ms-1"><i class="bi bi-download"></i></a>
-                        <button class="btn border-0 rounded-4 ms-1 sharePost" onclick="sharePost(<?= $row['id'] ?>)"><i class="bi bi-share-fill"></i></button>
+                        <button class="btn border-0 rounded-4 likePost me-1" value="<?= $row['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
+                        <a href="<?= 'images/uploads/' .  $row['image'] ?>" download class="btn border-0 rounded-4 me-1"><i class="bi bi-download"></i></a>
+                        <button class="btn border-0 rounded-4  sharePost sharePostBtn" onclick="sharePost(<?= $row['id'] ?>)"><i class="bi bi-share-fill"></i></button>
                     </div>
                 </div>
                 <a href="<?= 'post.php?id=' . $row['id'] ?>" class="post-image position-relative">

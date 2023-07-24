@@ -88,6 +88,40 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+    <div class="following-list position-fixed top-0 left-0 w-100 h-100">
+        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 ">
+            <div class="d-flex p-3 pb-2 shadow-sm">
+                <span><bdo dir="rtl">فۆڵۆو کراوەکان</bdo></span>
+                <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
+            </div>
+            <div class="users-list p-3">
+                <?php
+                $fID1 = $row['id'];
+                $following = $conn->query("select * from followers where follower_id = '$fID'");
+                if ($following->num_rows  > 0) {
+                    while ($FFA1 = $following->fetch_assoc()) {
+                        $FAID1 = $FFA1['user_id'];
+                        $followingAcc = $conn->query("select * from users where id = '$FAID1'");
+                        while ($FAID_row1 = $followingAcc->fetch_assoc()) { ?>
+                            <div class="follower_acc d-flex rounded-4 p-1 mb-1">
+                                <a href="<?= 'profile.php?id=' . $FAID_row1['id'] ?>" class="d-flex align-items-center text-decoration-none w-100 ">
+                                    <div class="image">
+                                        <img src="<?= './images/users/' . $FAID_row1['image'] ?>" alt="<?= $FAID_row1['username'] ?>" class="w-100">
+                                    </div>
+                                    <div class="detail ms-2 d-flex align-items-start justify-content-start flex-column">
+                                        <div class="m-0 p-0 text-black"><?= $FAID_row1['username']  ?></div>
+                                        <div class="m-0 p-0" style="font-size: 0.8em;"><small class="text-secondary"> <?= $FAID_row1['email']  ?></small></div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    <?php }
+                } else { ?>
+                    <p><bdo dir="rtl">هیچ ئەکاونتێک فۆڵۆو نەکراوە</bdo></p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
     </div>
     <div class="fireworks position-absolute w-100 h-100 top-0">
     </div>
@@ -135,7 +169,7 @@ if (!isset($_SESSION['user_id'])) {
                         <i class="bi bi-plus-circle "></i></button>
                 </p>
                 <div class="follow d-flex mb-3">
-                    <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo>
+                    <button class="btn d-flex" id="showFollowings"><bdo dir="rtl">فۆڵۆو</bdo>
                         <span class="ms-1">
                             <?php
                             $xid = $row['id'];
@@ -157,7 +191,6 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="share d-flex">
                     <a href="#" class="btn rounded rounded-4 ms-2" id="share" onclick="shareProfile(<?= $row['id'] ?>)"><bdo dir="rtl">بڵاوکردنەوە</bdo></a>
                     <?php if ($user_id == $row['session_id']) { ?>
-                        <a href="#" class="btn d-flex rounded rounded-4 ms-2"><bdo dir="rtl">دەستکاریکردن</bdo> </a>
                     <?php } else {
                         $uuid = $row['id'];
                         $avalable = $conn->query("select * from followers where user_id = '$uuid' and follower_id = '$uid'");
@@ -183,7 +216,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div class="profile-footer-content position-relative ">
-        <div class="liked liked-posts position-absolute show p-4   w-100 posts">
+        <div class="liked liked-posts position-absolute show p-4  w-100 posts">
             <?php
             $userId = $conn->query("select id from users where id = '$publisher_id'")->fetch_column();
             $likes = $conn->query("select * from likes where user_id = '$userId'");
@@ -208,20 +241,19 @@ if (!isset($_SESSION['user_id'])) {
                                 }
                                 ?>
                                 <button class="btn border-0 rounded-4 likePost me-1" value="<?= $post['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
-                                <a href="<?= 'images/' .  $post['image'] ?>" download class="btn border-0 rounded-4 me-1"><i class="bi bi-download"></i></a>
+                                <a href="<?= 'images/uploads/' .  $post['image'] ?>" download class="btn border-0 rounded-4 me-1"><i class="bi bi-download"></i></a>
                                 <button class="btn border-0 rounded-4  sharePost mt-1" onclick="sharePost(<?= $post['id'] ?>)"><i class="bi bi-share-fill"></i></button>
                             </div>
                         </div>
                         <a href="<?= 'post.php?id=' . $post['id'] ?>" class="post-image position-relative">
                             <div class="layer position-absolute  rounded-4 p-3 w-100 h-100 opacity-0">
-
                             </div>
-                            <img src="<?= 'images/' .  $post['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                            <img src="<?= 'images/uploads/' .  $post['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
                         </a>
                         <p class="card-title ms-2 mt-2"><?= $post['title'] ?></p>
                         <a href="<?= 'profile.php?id=' . $users_row['id'] ?>" class="d-flex align-items-center text-decoration-none text-black px-2 user">
                             <div class="user-img">
-                                <img src="<?= 'images/' . $users_row['image'] ?>" width="100%" class="rounded-circle">
+                                <img src="<?= 'images/users/' . $users_row['image'] ?>" width="100%">
                             </div>
                             <span class="ms-2 username"><?= $users_row['username'] ?></span>
                         </a>
@@ -232,27 +264,28 @@ if (!isset($_SESSION['user_id'])) {
             <?php
             } ?>
         </div>
-        <div class="created position-absolute  p-4 hide  w-100 posts created-posts ">
+        <div class="created created-posts position-absolute  p-4 hide  w-100 posts">
             <?php
             $createdPost = $conn->query("select * from posts where user_id = '$userId'");
             if ($createdPost->num_rows > 0) {
-                while ($row2 = $createdPost->fetch_assoc()) { ?>
+                while ($row3 = $createdPost->fetch_assoc()) { ?>
                     <div class="card mb-2 border-0  position-relative d-flex">
-                        <div class="layer position-absolute  rounded-4 p-3 w-100 h-100 opacity-0 align-self-end">
+                        <div class="layer position-absolute  rounded-4 p-3 w-10 h-10 opacity-0 align-self-end">
                             <div class="d-flex justify-content-end">
                                 <?php if ($user_id == $row['session_id']) { ?>
-                                    <a class="btn border-0 rounded-4 ms-1 " onclick="deletePost(<?= $row2['id'] ?>, this.parentElement)" value="<?= $row2['id'] ?>"><i class="bi bi-trash3"></i></a>
+                                    <a class="btn border-0 rounded-4 ms-1" onclick="deletePost(<?= $row3['id'] ?>, this.parentElement)" value="<?= $row3['id'] ?>"><i class="bi bi-trash3"></i></a>
                                 <?php } ?>
                             </div>
                         </div>
-                        <a href="<?= 'post.php?id=' . $row2['id'] ?>" class="post-image position-relative ">
-                            <img src="<?= 'images/uploads/' .  $row2['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                        <a href="<?= 'post.php?id=' . $row3['id'] ?>" class="post-image position-relative ">
+                            <div class="layer2 position-absolute  rounded-4 p-3 w-100 h-100 opacity-0 "></div>
+                            <img src="<?= './images/uploads/' .  $row3['image'] ?>" alt="" class="rounded rounded-4 w-100">
                         </a>
-                        <small class="text-seconadry p-1"><?= $row2['created'] ?></small>
-                        <p class="card-title ms-2 mt-2">
-                            <?= $row2['title'] ?> <br>
-                            <?= $row2['description'] ?></p>
-                        </p>
+                        <small class="text-secondary p-2 pb-0"><?= $row3['created'] ?></small>
+                        <div class="card-title ms-2 ">
+                          <span><?= $row3['title'] ?> </span>  <br>
+                           <span class="text-secondary"> <?= $row3['description'] ?></span>
+                        </div>
                     </div>
                 <?php  }
             } else { ?>
