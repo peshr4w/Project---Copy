@@ -378,6 +378,7 @@ button:focus {
     height: 120px;
     border-radius: 100%;
     overflow: hidden;
+    border: 1px solid lightgray !important;
 }
 
 .follow button,
@@ -538,6 +539,17 @@ button:focus {
     margin-top: 200px;
 }
 
+.add-bio {
+    display: none;
+    z-index: 200;
+    background-color: rgba(0 0 0 /10%);
+}
+
+.add-bio .add-bio-form {
+    z-index: 200;
+    margin-top: 200px;
+}
+
 .noposts {
     position: absolute;
     top: 50%;
@@ -560,6 +572,30 @@ button:focus {
     100% {
         transform: translateY(-15px);
     }
+}
+
+#updatePfp {
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.addBio {
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.bioTxt {
+    font-size: 14px;
+}
+
+#updatePfp:hover,
+.addBio:hover {
+    color: green !important;
+}
+
+.updateMsg {
+    background-color: rgba(0 255 0/10%);
+    top: -20%;
 }
 
 @media(max-width:900px) {

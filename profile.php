@@ -20,6 +20,7 @@ if (!isset($_SESSION['user_id'])) {
     ?>
     <title><?= $row['username'] ?></title>
 </head>
+<input type="hidden" id="userID" value="<?= $publisher_id ?>">
 
 <body>
     <?php include("./layout/logoutForm.php"); ?>
@@ -36,17 +37,59 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
+    <div class="add-bio position-fixed top-0 left-0 w-100 h-100">
+        <div class="add-bio-form rounded bg-white rounded-4 text-center p-3 shadow mx-auto w-25 ">
+            <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
+            <h5 class="mb-4"><bdo dir="rtl">پۆستی <bdo dir="rtl" id="postId">2</bdo> دەسڕیتەوە؟</bdo></h5>
+            
+        </div>
+    </div>
+
     <div class="container profile-page">
         <div class="row  mt-3 p-5">
-            <div class=" d-flex justify-content-center flex-column align-items-center mt-4">
-                <div class="image mb-4">
+            <div class=" d-flex justify-content-center flex-column align-items-center mt-4 position-relative">
+                <?php
+                if (isset($_GET['msg'])) {
+                    $msg = $_GET['msg']; ?>
+                    <p class="an updateMsg p-2 rounded-4 text-success position-absolute"><small> <?= $msg ?></small></p>
+
+                <?php } ?>
+                <div class="image mb-2 position-relative">
                     <img src="<?= 'images/users/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
                 </div>
-                <div class="details text-center">
-                    <h4 class="username"><strong> <?= $row['username'] ?></strong></h5>
-                        <small class="username text-secondary"><?= $row['email'] ?></small>
+
+                <?php if ($user_id == $row['session_id']) { ?>
+                    <form id="updateImage" action="php/updateImage.php" enctype="multipart/form-data" method="post" class="poition-absolute">
+                        <label for="profileImage" class="text-secondary" id="updatePfp"><small><bdo dir="rtl" class="me-1">گۆڕینی وێنەی پڕۆفایل</bdo></small><i class="bi bi-image"></i></label>
+                        <input type="file" name="profileImage" id="profileImage" accept="image/png, image/jpg, image/jpeg, image/gif" class="d-none">
+                    </form>
+                <?php } ?>
+                <div class="details text-center mt-2">
+                    <h4 class="username"><strong> <?= $row['username'] ?></strong></h4>
+                    <small class="username text-secondary"><?= $row['email'] ?></small>
                 </div>
-                <p class="mt-2 mb-2">This is a bio text</p>
+                <?php
+                $userBiId = $row['id'];
+                $bio = $conn->query("select bio from users where id = '$userBiId'")->fetch_column();
+                if ($bio == "null") {
+                    $bioTxt = "<bdo dir='rtl'>هێشتا هیچ بایۆیەک نییە</bdo>";
+                } else {
+                    $bioTxt = $bio;
+                }
+                ?>
+                <?php
+                if ($user_id == $row['session_id']) {
+                    $dic = 'd-block';
+                } else {
+                    $dic = 'd-none';
+                }
+                ?>
+                <p class="mt-2 mb-2 " style="font-size: 0.8em;">
+                    <small class="bioTxt"><?= $bioTxt ?></small>
+                    <button class="btn border-0 outline-0 addBio mx-auto <?= $dic ?>" id="addBio" onclick="addBio()">
+                        <bdo dir="rtl">زیادکر دن</bdo>
+                        <i class="bi bi-plus-circle "></i></button>
+                </p>
                 <div class="follow d-flex mb-3">
                     <button class="btn d-flex"><bdo dir="rtl">فۆڵۆو</bdo>
                         <span class="ms-1">
@@ -141,7 +184,7 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 <?php }
             } else { ?>
-                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"> <bdo dir="rtl">هیچ پۆستێک لایک نەکراوە❤</bdo></div>
+                <div class="p-2 d-flex m-2 noposts text-center text-secondary text-sm"> <bdo dir="rtl">هیچ پۆستێک لایک نەکراوە💔</bdo></div>
             <?php
             } ?>
         </div>

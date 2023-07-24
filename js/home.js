@@ -104,7 +104,6 @@ $.each(likeBtns, function(i) {
             });
         }
     });
-
 });
 
 function sharePost(id) {
@@ -153,7 +152,6 @@ function follow(userId, followerId) {
             url: "php/follow.php",
             data: { userId: userId, followerId: followerId },
             success: function(res) {
-                console.log(res)
                 $("#followBtn").removeClass('followBtn');
                 $("#followBtn").addClass('unfollowBtn');
                 $("#followBtn").html("<bdo dir='rtl'> لابردن </bdo>");
@@ -166,7 +164,6 @@ function follow(userId, followerId) {
             url: "php/unFollow.php",
             data: { userId: userId, followerId: followerId },
             success: function(res) {
-                console.log(res)
                 $("#followBtn").addClass('followBtn');
                 $("#followBtn").removeClass('unfollowBtn');
                 $("#followBtn").html("<bdo dir='rtl'>فۆڵۆو</bdo>");
@@ -174,4 +171,37 @@ function follow(userId, followerId) {
             }
         });
     }
+};
+$("#profileImage").change(() => {
+    $("#updateImage").trigger('submit')
+});
+
+function hideMsg() {
+    setTimeout(() => {
+        $(".updateMsg").hide()
+    }, 5000)
 }
+hideMsg();
+
+function addBio() {
+    $(".add-bio").show();
+    $(".add-bio").addClass("an");
+
+    $("#deletePost").click(() => {
+        $.ajax({
+            type: "get",
+            url: "php/deletePost.php",
+            data: { postId: id },
+            success: function(res) {
+                $(".deletePost").hide();
+                console.log(res)
+            }
+        });
+    });
+    $("#cancelDelete").click(() => {
+        $(".deletePost").hide();
+    })
+};
+$(".add-bio-form .btn-close").click(() => {
+    $(".add-bio").hide();
+});
