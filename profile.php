@@ -36,15 +36,61 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
-
     <div class="add-bio position-fixed top-0 left-0 w-100 h-100">
         <div class="add-bio-form rounded bg-white rounded-4 text-center p-3 shadow mx-auto w-25 ">
             <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
-            <h5 class="mb-4"><bdo dir="rtl">پۆستی <bdo dir="rtl" id="postId">2</bdo> دەسڕیتەوە؟</bdo></h5>
-            
+            <p class="mb-4"><bdo dir="rtl">نوێکردنەوەی بایۆ</bdo></p>
+            <div class="form-group position-relative">
+                <label for="bioInput">
+                    <span class="text-secondary blc">
+                        <small id="bioLength">0</small><small>&bsol;80 </small>
+                    </span>
+                </label>
+                <input type="text" placeholder="شتێک بنوسە" id="bioInput" class="form-control rounded-4" maxlength="80" autocomplete="off">
+                <div class="btns pt-3 d-flex justify-content-end">
+                    <button class="btn btn-sm me-1 rounded-4 close"><bdo dir="rtl">لابردن</bdo></button>
+                    <button class="btn btn-sm rounded-4" id="updateBioBtn"><bdo dir="rtl">نوێکردنەوە</bdo></button>
+                </div>
+            </div>
         </div>
     </div>
-
+    <div class="follow-list position-fixed top-0 left-0 w-100 h-100">
+        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 ">
+            <div class="d-flex p-3 pb-2 shadow-sm">
+                <span><bdo dir="rtl">فۆڵۆوەرەکان</bdo></span>
+                <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
+            </div>
+            <div class="users-list p-3">
+                <?php
+                $fID = $row['id'];
+                $followers = $conn->query("select * from followers where user_id = '$fID'");
+                if ($followers->num_rows  > 0) {
+                    while ($FFA = $followers->fetch_assoc()) {
+                        $FAID = $FFA['follower_id'];
+                        $followerAcc = $conn->query("select * from users where id = '$FAID'");
+                        while ($FAID_row = $followerAcc->fetch_assoc()) { ?>
+                            <div class="follower_acc d-flex rounded-4 p-1 mb-1">
+                                <a href="<?= 'profile.php?id=' . $FAID_row['id'] ?>" class="d-flex align-items-center text-decoration-none w-100 ">
+                                    <div class="image">
+                                        <img src="<?= './images/users/' . $FAID_row['image'] ?>" alt="<?= $FAID_row['username'] ?>" class="w-100">
+                                    </div>
+                                    <div class="detail ms-2 d-flex align-items-start justify-content-start flex-column">
+                                        <div class="m-0 p-0 text-black"><?= $FAID_row['username']  ?></div>
+                                        <div class="m-0 p-0" style="font-size: 0.8em;"><small class="text-secondary"> <?= $FAID_row['email']  ?></small></div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php } ?>
+                    <?php }
+                } else { ?>
+                    <p><bdo dir="rtl">بەکارهێنەر هیچ فۆڵۆوەرێکی نییە</bdo></p>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="fireworks position-absolute w-100 h-100 top-0">
+    </div>
     <div class="container profile-page">
         <div class="row  mt-3 p-5">
             <div class=" d-flex justify-content-center flex-column align-items-center mt-4 position-relative">
@@ -52,12 +98,10 @@ if (!isset($_SESSION['user_id'])) {
                 if (isset($_GET['msg'])) {
                     $msg = $_GET['msg']; ?>
                     <p class="an updateMsg p-2 rounded-4 text-success position-absolute"><small> <?= $msg ?></small></p>
-
                 <?php } ?>
                 <div class="image mb-2 position-relative">
                     <img src="<?= 'images/users/' . $row['image'] ?>" alt="<?= $row['username'] ?>" class="w-100">
                 </div>
-
                 <?php if ($user_id == $row['session_id']) { ?>
                     <form id="updateImage" action="php/updateImage.php" enctype="multipart/form-data" method="post" class="poition-absolute">
                         <label for="profileImage" class="text-secondary" id="updatePfp"><small><bdo dir="rtl" class="me-1">گۆڕینی وێنەی پڕۆفایل</bdo></small><i class="bi bi-image"></i></label>
@@ -84,10 +128,10 @@ if (!isset($_SESSION['user_id'])) {
                     $dic = 'd-none';
                 }
                 ?>
-                <p class="mt-2 mb-2 " style="font-size: 0.8em;">
-                    <small class="bioTxt"><?= $bioTxt ?></small>
+                <p class="mt-2 mb-2 d-flex flex-wrap flex-column" style="font-size: 0.8em;">
+                    <small class="bioTxt text-center" id="bioTxt"><?= $bioTxt ?></small>
                     <button class="btn border-0 outline-0 addBio mx-auto <?= $dic ?>" id="addBio" onclick="addBio()">
-                        <bdo dir="rtl">زیادکر دن</bdo>
+                        <bdo dir="rtl">نوێکردنەوە</bdo>
                         <i class="bi bi-plus-circle "></i></button>
                 </p>
                 <div class="follow d-flex mb-3">
@@ -100,7 +144,7 @@ if (!isset($_SESSION['user_id'])) {
                             ?>
                         </span>
                     </button>
-                    <button class="btn d-flex"> <bdo dir="rtl">فۆڵۆوەر</bdo>
+                    <button class="btn d-flex" id="showFollowers"> <bdo dir="rtl">فۆڵۆوەر</bdo>
                         <span class="ms-1" id="followerCount">
                             <?php
                             $uid = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
@@ -111,7 +155,7 @@ if (!isset($_SESSION['user_id'])) {
                     </button>
                 </div>
                 <div class="share d-flex">
-                    <a href="#" class="btn rounded rounded-4 ms-2" id="share"><bdo dir="rtl">بڵاوکردنەوە</bdo></a>
+                    <a href="#" class="btn rounded rounded-4 ms-2" id="share" onclick="shareProfile(<?= $row['id'] ?>)"><bdo dir="rtl">بڵاوکردنەوە</bdo></a>
                     <?php if ($user_id == $row['session_id']) { ?>
                         <a href="#" class="btn d-flex rounded rounded-4 ms-2"><bdo dir="rtl">دەستکاریکردن</bdo> </a>
                     <?php } else {

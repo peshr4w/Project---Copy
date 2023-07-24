@@ -185,23 +185,58 @@ hideMsg();
 
 function addBio() {
     $(".add-bio").show();
-    $(".add-bio").addClass("an");
+    $(".add-bio-form").addClass("an");
 
-    $("#deletePost").click(() => {
-        $.ajax({
-            type: "get",
-            url: "php/deletePost.php",
-            data: { postId: id },
-            success: function(res) {
-                $(".deletePost").hide();
-                console.log(res)
-            }
-        });
+    $("#bioInput").keyup((e) => {
+        if ($("#bioInput").val().length == 80) {
+            $("#bioLength").css('color', 'red');
+        } else {
+            $("#bioLength").css('color', 'gray');
+        }
+        $("#bioLength").html($("#bioInput").val().length)
     });
-    $("#cancelDelete").click(() => {
-        $(".deletePost").hide();
+
+    $("#updateBioBtn").click(() => {
+        if ($("#bioInput").val() != "") {
+            let bio = $("#bioInput").val().trim();
+            let user_id = $("#userId").val();
+
+            $.ajax({
+                type: "post",
+                url: "php/updateBio.php",
+                data: { bio: bio, userId: user_id },
+                success: function(res) {
+                    $("#bioTxt").html(res)
+                    $(".add-bio").hide();
+                    $("#bioInput").val("")
+                }
+            });
+        }
     })
 };
 $(".add-bio-form .btn-close").click(() => {
     $(".add-bio").hide();
+});
+$(".add-bio-form .close").click(() => {
+    $(".add-bio").hide();
+});
+
+function shareProfile(id) {
+    console.log(id)
+    if (navigator.share) {
+        navigator.share({
+                title: "Share this profile",
+                url: `profile.php?id=${id}`,
+                text: "Share this profile"
+            })
+            .then(res => {})
+            .catch((err) => { console.log(err) })
+    }
+};
+$("#showFollowers").click(() => {
+    $(".follow-list").show();
+    $(".follow-list-container").addClass("an");
+});
+$(".follow-list-container .btn-close").click(() => {
+    $(".follow-list").hide();
 });

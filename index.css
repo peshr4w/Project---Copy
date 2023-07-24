@@ -47,7 +47,8 @@ section nav.navbar form button {
     z-index: 100;
 }
 
-.loginBtnn {
+.loginBtnn,
+.add-bio-form .btn:nth-child(2) {
     background-color: #2D3A3A;
     color: #FCFFFC;
 }
@@ -539,15 +540,35 @@ button:focus {
     margin-top: 200px;
 }
 
-.add-bio {
-    display: none;
+.add-bio,
+.follow-list {
     z-index: 200;
+    display: none;
     background-color: rgba(0 0 0 /10%);
 }
 
-.add-bio .add-bio-form {
+.follow-list {
+    display: block;
+}
+
+.add-bio .add-bio-form,
+.follow-list .follow-list-container {
     z-index: 200;
     margin-top: 200px;
+}
+
+.follow-list .follow-list-container {
+    margin-top: 200px;
+    max-height: 400px;
+}
+
+.follow-list .follow-list-container .users-list {
+    max-height: 220px !important;
+    overflow-y: scroll;
+}
+
+.add-bio .add-bio-form input:focus {
+    border: 1px solid #2D3A3A !important;
 }
 
 .noposts {
@@ -586,6 +607,8 @@ button:focus {
 
 .bioTxt {
     font-size: 14px;
+    max-width: 300px;
+    word-break: break-all;
 }
 
 #updatePfp:hover,
@@ -596,6 +619,17 @@ button:focus {
 .updateMsg {
     background-color: rgba(0 255 0/10%);
     top: -20%;
+}
+
+.follower_acc:hover {
+    background-color: whitesmoke;
+}
+
+.follower_acc .image {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 100%;
 }
 
 @media(max-width:900px) {
@@ -637,6 +671,10 @@ button:focus {
         width: 50% !important;
     }
     .deletePost .delete-form {
+        width: 50% !important;
+    }
+    .add-bio .add-bio-form,
+    .follow-list-container {
         width: 50% !important;
     }
 }
@@ -689,6 +727,10 @@ button:focus {
         width: 90% !important;
     }
     .deletePost .delete-form {
+        width: 90% !important;
+    }
+    .add-bio .add-bio-form,
+    .follow-list-container {
         width: 90% !important;
     }
 }
