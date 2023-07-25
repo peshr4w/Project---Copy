@@ -119,7 +119,9 @@ if (!isset($_SESSION['user_id'])) {
                                     <img src="<?= './images/users/' . $cr['image'] ?>" alt="<?= $cr['username'] ?>" class="w-100">
                                 </div>
                                 <div class="details w-75 ms-2">
-                                    <small><a href="<?= 'profile.php?id=' . $cr['id'] ?>" class="text-decoration-none text-black"> <?= $cr['username'] ?></a></small> <small class="ms-1 text-secondary"><?= $comment['comment'] ?></small>
+                                    <small><a href="<?= 'profile.php?id=' . $cr['id'] ?>" class="text-decoration-none text-black"> <?= $cr['username'] ?></a></small>
+                                    <small class="ms-1 text-secondary"><?= $comment['comment'] ?></small> <br>
+                                    <small class="text-secondary" style="font-size:12px"><?= $comment['date'] ?></small>
                                 </div>
                             </div>
 
