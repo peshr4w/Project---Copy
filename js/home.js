@@ -251,3 +251,19 @@ $("#showFollowings").click(() => {
 $(".following-list .follow-list-container .btn-close").click(() => {
     $(".following-list").hide();
 });
+
+function sendComment(e, comment, postId, userId) {
+    if (e.key == "Enter") {
+        $.ajax({
+            type: "POST",
+            url: "php/addComment.php",
+            data: { comment: comment, postId: postId, userId: userId },
+            success: function(res) {
+                $(".comments").append(res);
+                $("#dbn").html("");
+                $(".comments").animate({ scrollTop: $(document).height() }, 10);
+                $("#comment_input").val("");
+            }
+        });
+    }
+}

@@ -41,8 +41,7 @@ section nav.navbar form button {
 }
 
 .navbar {
-    position: sticky;
-    position: -webkit-sticky;
+    position: relative;
     top: 0;
     z-index: 100;
 }
@@ -692,6 +691,33 @@ button:focus {
     background-color: whitesmoke;
 }
 
+.post-container .comments {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.comment-input .user {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.comment-input input:focus {
+    border: 1px solid #2D3A3A;
+}
+
+.comments .profile .image {
+    width: 30px;
+    height: 30px;
+}
+
+.comments .profile .details {}
+
+.comments .profile:hover {
+    background-color: transparent !important;
+}
+
 @media(max-width:900px) {
     .image-container {
         display: block !important;
@@ -811,5 +837,12 @@ button:focus {
     }
     .posts {
         padding: 15px !important;
+    }
+    .search .search-result {
+        width: 150%;
+    }
+    .comment-input .user {
+        width: 40px;
+        height: 40px;
     }
 }

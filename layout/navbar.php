@@ -4,7 +4,7 @@ include('./php/conf.php');
 $profile = $conn->query("select * from users where session_id = '$user_id'");
 $row1 = $profile->fetch_assoc();
 ?>
-<div class="navbar  bg-white px-4 py-3 ">
+<div class="navbar  bg-white px-4 py-3">
     <div class="brand col-2 d-flex">
         <a href="home.php" class="brand d-flex align-items-center text-decoration-none text-black">
             <img src="svg/icon.svg" alt="icon" width="30px">

@@ -67,12 +67,12 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="detail ms-2 d-flex align-items-start justify-content-start flex-column">
                             <div class="m-0 p-0 text-black"><?= $creator['username']  ?></div>
                             <div class="m-0 p-0" style="font-size: 0.8em;"><small class="text-secondary">
-                            <?php
-                            $cid = $creator['id'];
-                            $followCount = $conn->query("select count(*) from followers where user_id = '$cid' ")->fetch_column();
-                            echo ($followCount." followers");
-                            ?>
-                            </small></div>
+                                    <?php
+                                    $cid = $creator['id'];
+                                    $followCount = $conn->query("select count(*) from followers where user_id = '$cid' ")->fetch_column();
+                                    echo ($followCount . " followers");
+                                    ?>
+                                </small></div>
                         </div>
 
                         <?php if ($user_id == $creator['session_id']) { ?>
@@ -95,7 +95,58 @@ if (!isset($_SESSION['user_id'])) {
 
                     </a>
                 </div>
+                <h6 class="text-end mt-3">
+                    <bdo dir="ltr" class="ms-1">
+                        <span id="commentCount">
+                            <?php
+                            $commentCount = $conn->query("select count(*) from comments where post_id = '$pid' ")->fetch_column();
+                            echo ($commentCount)
+                            ?>
+                        </span>
+                    </bdo>
+                    <bdo dir="rtl">کۆمێنت</bdo>
+                </h6>
+                <div class="comments mt-3">
+                    <?php
+                    $comments = $conn->query("select * from comments where post_id = '$pid' ");
+                    if ($comments->num_rows > 0) {
+                        while ($comment = $comments->fetch_assoc()) {
+                            $crid = $comment['user_id'];
+                            $cr = $conn->query("select * from users where id = '$crid'")->fetch_assoc();
+                    ?>
+                            <div class="comment profile mb-4 d-flex">
+                                <div class="image">
+                                    <img src="<?= './images/users/' . $cr['image'] ?>" alt="<?= $cr['username'] ?>" class="w-100">
+                                </div>
+                                <div class="details w-75 ms-2">
+                                    <small><a href="<?= 'profile.php?id=' . $cr['id'] ?>" class="text-decoration-none text-black"> <?= $cr['username'] ?></a></small> <small class="ms-1 text-secondary"><?= $comment['comment'] ?></small>
+                                </div>
+                            </div>
 
+                        <?php }
+                    } else { ?>
+                    <div id="dbn">
+                        <i class="bi bi-chat-right-text"></i> <bdo dir="rtl">هیچ کۆمێنتێک نەکراوە</bdo>
+                        </div>
+                    <?php }
+                    ?>
+                </div>
+                <div class="comment-input row mt-4">
+                    <div class="col-10 ">
+                        <?php
+                        $uid1 = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
+                        ?>
+                        <input type="text" placeholder="شتێک بنوسە" id="comment_input" maxlength="255" onkeypress="sendComment(event, this.value, <?= $post['id'] ?>, <?= $uid1 ?>)" class="form-control rounded-5 p-2">
+                    </div>
+                    <div class="col-2 p-0">
+                        <div class="user">
+                            <?php
+                            $writer = $conn->query("select * from users where session_id = '$user_id'")->fetch_assoc();
+                            ?>
+                            <img src="<?= './images/users/' . $writer['image'] ?>" alt="<?= $writer['username'] ?>" class="w-100">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

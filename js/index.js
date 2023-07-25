@@ -99,7 +99,7 @@ $('#signupForm').submit(function(e) {
                 $('#signupBtn').attr('disabled')
                 setTimeout(() => {
                     window.location.href = "home.php"
-                }, 900)
+                }, 400)
             } else {
                 $("#signup-result").html(res)
             }
@@ -126,7 +126,7 @@ $('#loginForm').submit(function(e) {
                 $("#login-result").html("سەرکەوتوو بوو")
                 setTimeout(() => {
                     window.location.href = "home.php"
-                }, 900)
+                }, 400)
                 $('#loginBtn').attr('disabled')
             } else {
                 $("#login-result").html(res)

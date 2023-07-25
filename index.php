@@ -102,8 +102,17 @@ if (isset($_SESSION['user_id'])) {
                 </div>
                 <div class="col col-12 col-md-6"></div>
             </div>
+            
         </section>
+        <footer style="background-color:  #2D3A3A;" class="p-3">
+                <span class="text-secondary">Created by <span style="color:lightgray">@peshraw</span>  <span id="year"></span> </span>
+            </footer>
     </div>
+
+    <script>
+        let year = new Date().getFullYear();
+        $("#year").html(year)
+    </script>
     <?php include("./layout/links.php") ?>
 
 </body>
