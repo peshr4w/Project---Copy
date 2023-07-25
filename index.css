@@ -484,7 +484,7 @@ button:focus {
 }
 
 .card .post-image {
-    min-height: 100px !important;
+    min-height: 200px !important;
     z-index: 1;
 }
 
@@ -590,7 +590,8 @@ button:focus {
     transform: translate(-50%, -50%);
 }
 
-.share .unfollowBtn {
+.share .unfollowBtn,
+.post-container .profile .unfollowBtn {
     background-color: #2D3A3A !important;
     color: whitesmoke !important;
 }
@@ -637,11 +638,58 @@ button:focus {
     background-color: whitesmoke;
 }
 
-.follower_acc .image {
+.follower_acc .image,
+.post-container .image {
     width: 40px;
     height: 40px;
     overflow: hidden;
     border-radius: 100%;
+}
+
+.post-container {
+    overflow: hidden;
+}
+
+.description-header .layer a,
+.description-header .layer button {
+    font-size: 1.1rem;
+}
+
+.description-header .layer .p-2>*:not(.likePost):hover {
+    color: whitesmoke;
+    background-color: #2D3A3A !important;
+}
+
+.description-header .layer .likePost {
+    color: #e90a1c;
+}
+
+.post-container .profile .unfollowBtn,
+.post-container .profile .followBtn {
+    font-size: 14px;
+}
+
+.description-header .layer .likePost .like-label {
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #2D3A3A;
+    opacity: 0;
+    font-size: 12px;
+    width: 200%;
+}
+
+.description-header .layer .likePost:hover .like-label {
+    opacity: 1;
+}
+
+.description-header .layer .likePost:hover {
+    color: whitesmoke;
+    background-color: #e90a1c !important;
+}
+
+.post-container .profile:hover {
+    background-color: whitesmoke;
 }
 
 @media(max-width:900px) {
@@ -688,6 +736,9 @@ button:focus {
     .add-bio .add-bio-form,
     .follow-list-container {
         width: 50% !important;
+    }
+    .postDetails {
+        padding: 0;
     }
 }
 
@@ -746,6 +797,19 @@ button:focus {
         width: 90% !important;
     }
     .sharePostBtn {
-        margin-top: 5px;
+        margin-top: 10px;
+    }
+    .post-container .profile {
+        font-size: 16px;
+    }
+    .post-container .profile .unfollowBtn,
+    .post-container .profile .followBtn {
+        font-size: 12px;
+    }
+    .postDetails {
+        padding: 25px !important;
+    }
+    .posts {
+        padding: 15px !important;
     }
 }

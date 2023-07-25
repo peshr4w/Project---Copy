@@ -18,7 +18,7 @@ if (!isset($_SESSION['user_id'])) {
     include("./layout/navbar.php");
     include("./php/conf.php");
     ?>
-    <div class="posts p-3 gap-4 ">
+    <div class="posts p-3 px-5 gap-4 ">
         <?php
         $posts = $conn->query("select * from posts");
 

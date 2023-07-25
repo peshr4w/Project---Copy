@@ -80,8 +80,9 @@ $.each(likeBtns, function(i) {
                 },
                 success: function(res) {
                     if (res == 'liked') {
-                        $(likeBtn).find('i').removeClass('bi-heart')
-                        $(likeBtn).find('i').addClass('bi-heart-fill')
+                        $(likeBtn).find('i').removeClass('bi-heart');
+                        $(likeBtn).find('i').addClass('bi-heart-fill');
+                        $(".like-label").html("ڵایک کراوە");
                     }
                 }
             });
@@ -97,8 +98,9 @@ $.each(likeBtns, function(i) {
                 success: function(res) {
                     console.log(res)
                     if (res == 'unliked') {
-                        $(likeBtn).find('i').removeClass('bi-heart-fill')
-                        $(likeBtn).find('i').addClass('bi-heart')
+                        $(likeBtn).find('i').removeClass('bi-heart-fill');
+                        $(likeBtn).find('i').addClass('bi-heart');
+                        $(".like-label").html("ڵایک نەکراوە")
                     }
                 }
             });
