@@ -659,6 +659,10 @@ button:focus {
     background-color: #2D3A3A !important;
 }
 
+.description-header .layer .p-2 .likePost:hover i small {
+    color: whitesmoke !important;
+}
+
 .description-header .layer .likePost {
     color: #e90a1c;
 }
@@ -712,8 +716,6 @@ button:focus {
     height: 30px;
 }
 
-.comments .profile .details {}
-
 .comments .profile:hover {
     background-color: transparent !important;
 }
@@ -765,6 +767,22 @@ button:focus {
     }
     .postDetails {
         padding: 0;
+    }
+}
+
+.pop-up {
+    animation: popUp 0.2s linear;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 

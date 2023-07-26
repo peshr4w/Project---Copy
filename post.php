@@ -48,8 +48,15 @@ if (!isset($_SESSION['user_id'])) {
                             <a href="<?= './images/uploads/' .  $post['image'] ?>" title="دابەزاندن" download class="btn border-0 rounded-4 "><i class="bi bi-download"></i></a>
                             <button class="btn border-0 rounded-4  sharePost sharePostBtn mt-0 ms-2" title="بڵاوکردنەوە" onclick="sharePost(<?= $post['id'] ?>)"><i class="bi bi-share-fill"></i></button>
                             <button class="btn border-0 rounded-4 likePost ms-auto position-relative" id="likePostBtn" value="<?= $post['id'] ?>">
-                                <i class="bi  <?= $class ?>"></i>
-                                <small class="position-absolute like-label"><?= $likedTxt ?></small>
+                                <i class="bi  <?= $class ?>">
+                                    <?php
+                                    $likesCount = $conn->query("select count(*) from likes where post_id = '$pid' ")->fetch_column();
+                                    ?>
+                                    <small class="text-secondary" style="font-size: 12px;font-style: normal;" class="postlikesCount"><?= $likesCount ?></small>
+                                </i>
+                                <small class="position-absolute like-label">
+                                    <?= $likedTxt ?>
+                                </small>
                             </button>
 
                         </div>
@@ -121,14 +128,36 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="details w-75 ms-2">
                                     <small><a href="<?= 'profile.php?id=' . $cr['id'] ?>" class="text-decoration-none text-black"> <?= $cr['username'] ?></a></small>
                                     <small class="ms-1 text-secondary"><?= $comment['comment'] ?></small> <br>
-                                    <small class="text-secondary" style="font-size:12px"><?= $comment['date'] ?></small>
+                                    <small class="text-secondary" style="font-size:12px">
+                                        <?php
+                                        $cmd = $comment['date'];
+                                        include('php/timeAgo.php');
+                                        ?>
+                                    </small>
+                                    <?php
+                                    $cmtid = $comment['id'];
+                                    $uid = $conn->query("select id from users where session_id = '$user_id'")->fetch_column();
+                                    $like_avalable = $conn->query("select * from comment_likes where user_id = '$uid' and comment_id = '$cmtid'");
+                                    $likesCount = $conn->query("select count(*) from comment_likes where comment_id = '$cmtid' ")->fetch_column();
+                                    if ($like_avalable->num_rows > 0) {
+                                        $lchi = "bi-heart-fill";
+                                    } else {
+                                        $lchi = "bi-heart";
+                                    }
+                                    ?>
+                                    <span class="ms-3 position-relative ">
+                                        <a class="btn border-0 outline-0 p-0" onclick="likeComment(<?= $uid ?>, <?= $comment['id'] ?> , this.parentElement)">
+                                            <i class="bi <?= $lchi ?> "></i>
+                                            <small class="text-secondary " class="likesCounter" style="font-size: 12px;"><?= $likesCount ?></small>
+                                        </a>
+                                    </span>
                                 </div>
                             </div>
 
                         <?php }
                     } else { ?>
-                    <div id="dbn">
-                        <i class="bi bi-chat-right-text"></i> <bdo dir="rtl">هیچ کۆمێنتێک نەکراوە</bdo>
+                        <div id="dbn">
+                            <i class="bi bi-chat-right-text"></i> <bdo dir="rtl">هیچ کۆمێنتێک نەکراوە</bdo>
                         </div>
                     <?php }
                     ?>

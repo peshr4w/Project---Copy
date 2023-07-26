@@ -79,11 +79,10 @@ $.each(likeBtns, function(i) {
                     postId: postId
                 },
                 success: function(res) {
-                    if (res == 'liked') {
-                        $(likeBtn).find('i').removeClass('bi-heart');
-                        $(likeBtn).find('i').addClass('bi-heart-fill');
-                        $(".like-label").html("ڵایک کراوە");
-                    }
+                    $(likeBtn).find('i').removeClass('bi-heart');
+                    $(likeBtn).find('i').addClass('bi-heart-fill');
+                    $(".like-label").html("ڵایک کراوە");
+                    $(likeBtn).find('i small').html(res)
                 }
             });
         } else {
@@ -96,12 +95,10 @@ $.each(likeBtns, function(i) {
                     postId: postId
                 },
                 success: function(res) {
-                    console.log(res)
-                    if (res == 'unliked') {
-                        $(likeBtn).find('i').removeClass('bi-heart-fill');
-                        $(likeBtn).find('i').addClass('bi-heart');
-                        $(".like-label").html("ڵایک نەکراوە")
-                    }
+                    $(likeBtn).find('i').removeClass('bi-heart-fill');
+                    $(likeBtn).find('i').addClass('bi-heart');
+                    $(".like-label").html("ڵایک نەکراوە")
+                    $(likeBtn).find('i small').html(res)
                 }
             });
         }
@@ -263,6 +260,38 @@ function sendComment(e, comment, postId, userId) {
                 $("#dbn").html("");
                 $(".comments").animate({ scrollTop: $(document).height() }, 10);
                 $("#comment_input").val("");
+            }
+        });
+    }
+};
+
+function likeComment(userId, commentId, el) {
+    if ($(el).find('i').hasClass('bi-heart')) {
+        $.ajax({
+            type: "POST",
+            url: "php/likeComment.php",
+            data: { userId: userId, commentId: commentId },
+            success: function(res) {
+                $(el).find('i').addClass('bi-heart-fill');
+                $(el).find('i').removeClass('bi-heart');
+                $(el).find('a').addClass('pop-up');
+                $(el).find('small').html(res)
+
+            }
+        });
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "php/unlikeComment.php",
+            data: { userId: userId, commentId: commentId },
+            success: function(res) {
+                $(el).find('i').addClass('bi-heart');
+                $(el).find('i').removeClass('bi-heart-fill');
+                $(el).find('a').removeClass('pop-up');
+                $(el).find('small').html(res)
+                if (res == "") {
+                    $(el).find('small').html(0)
+                }
             }
         });
     }
