@@ -54,13 +54,18 @@ $row1 = $profile->fetch_assoc();
         <a href="#" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-gear-wide me-1"></i> <bdo dir="rtl">ڕێکخستن</bdo>
         </a>
-        <a href="#" class="btn  p-2 border rounded rounded-4 mt-3 ms-1 position-relative" >
-        <i class="bi bi-bell me-1"></i><bdo dir="rtl"><bdo dir="rtl">ئاگادار کردنەوە</bdo></bdo>
-        <span class="position-absolute d-none rounded-circle warning" style="width:15px;height: 15px;"></span>
+        <a href="inbox.php" onclick="removeInboxIcon(<?= $row1['id'] ?>)" class="btn  p-2 border rounded rounded-4 mt-3 ms-1 position-relative">
+            <i class="bi bi-bell me-1"></i><bdo dir="rtl"><bdo dir="rtl">ئاگادار کردنەوە</bdo></bdo>
+            <?php
+            $uid = $row1['id'];
+            $inbox = $conn->query("select inbox from users where id = '$uid'")->fetch_column();
+            if ($inbox == "1") { ?>
+                <span class="position-absolute rounded-circle warning" style="width:15px;height: 15px;"></span>
+            <?php } ?>
         </a>
         <a href="#" class="btn  p-2 border rounded rounded-4 mt-3 ms-1" id="logout">
             <i class="bi bi-box-arrow-right me-1"></i><bdo dir="rtl">چوونە دەرەوە</bdo>
         </a>
-       
+
     </div>
 </div>

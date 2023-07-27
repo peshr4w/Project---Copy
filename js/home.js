@@ -303,3 +303,15 @@ $("#title").keyup(() => {
         $("#create").removeAttr("disabled");
     }
 });
+
+function deleteInbox(id, el) {
+    $(el).addClass("d-none");
+    $.ajax({
+        type: "get",
+        url: "php/deleteInbox.php",
+        data: { inboxId: id },
+        success: function(res) {
+
+        }
+    });
+}

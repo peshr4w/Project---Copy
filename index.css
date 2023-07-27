@@ -830,6 +830,10 @@ button:focus {
     }
 }
 
+.warning {
+    border: 2px solid #fff !important;
+}
+
 @media(max-width:600px) {
     .links {
         display: none;
