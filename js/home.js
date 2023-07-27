@@ -57,33 +57,33 @@ $("#logout").click(() => {
     });
     $("#no").click(() => {
         $(".logout").hide();
-    })
+    });
 });
 $(".logout-form .btn-close").click(() => {
     $(".logout").hide();
 });
 let likeBtns = $(".likePost");
 $.each(likeBtns, function(i) {
-    let likeBtn = $(this)[0]
+    let likeBtn = $(this)[0];
 
-    let userId = $("#userId").val()
+    let userId = $("#userId").val();
 
     $(likeBtn).click(() => {
-        if ($(likeBtn).find('i').hasClass('bi-heart')) {
+        if ($(likeBtn).find("i").hasClass("bi-heart")) {
             let postId = $(likeBtn).val();
             $.ajax({
                 type: "get",
                 url: "php/likePost.php",
                 data: {
                     userId: userId,
-                    postId: postId
+                    postId: postId,
                 },
                 success: function(res) {
-                    $(likeBtn).find('i').removeClass('bi-heart');
-                    $(likeBtn).find('i').addClass('bi-heart-fill');
+                    $(likeBtn).find("i").removeClass("bi-heart");
+                    $(likeBtn).find("i").addClass("bi-heart-fill");
                     $(".like-label").html("ڵایک کراوە");
-                    $(likeBtn).find('i small').html(res)
-                }
+                    $(likeBtn).find("i small").html(res);
+                },
             });
         } else {
             let postId = $(likeBtn).val();
@@ -92,14 +92,14 @@ $.each(likeBtns, function(i) {
                 url: "php/unlikePost.php",
                 data: {
                     userId: userId,
-                    postId: postId
+                    postId: postId,
                 },
                 success: function(res) {
-                    $(likeBtn).find('i').removeClass('bi-heart-fill');
-                    $(likeBtn).find('i').addClass('bi-heart');
-                    $(".like-label").html("ڵایک نەکراوە")
-                    $(likeBtn).find('i small').html(res)
-                }
+                    $(likeBtn).find("i").removeClass("bi-heart-fill");
+                    $(likeBtn).find("i").addClass("bi-heart");
+                    $(".like-label").html("ڵایک نەکراوە");
+                    $(likeBtn).find("i small").html(res);
+                },
             });
         }
     });
@@ -108,20 +108,18 @@ $.each(likeBtns, function(i) {
 function sharePost(id) {
     let url = "post.php?id=" + id;
     if (navigator.share) {
-        navigator.share({
+        navigator
+            .share({
                 title: "post" + id,
                 url: url,
-                text: "share this post"
+                text: "share this post",
             })
-            .then(res => {
-
-            })
-            .catch(err => console.log(err))
+            .then((res) => {})
+            .catch((err) => console.log(err));
     }
-};
+}
 
 function deletePost(id, el) {
-
     $(".deletePost").show();
     $(".delete-form").addClass("an");
     $("#postId").html(id);
@@ -131,32 +129,31 @@ function deletePost(id, el) {
             url: "php/deletePost.php",
             data: { postId: id },
             success: function(res) {
-                $(el).parents('.card').addClass('d-none')
+                $(el).parents(".card").addClass("d-none");
                 $(".deletePost").hide();
-            }
+            },
         });
     });
     $("#cancelDelete").click(() => {
         $(".deletePost").hide();
-    })
-
-};
+    });
+}
 $(".delete-form .btn-close").click(() => {
     $(".deletePost").hide();
 });
 
 function follow(userId, followerId) {
-    if ($("#followBtn").hasClass('followBtn')) {
+    if ($("#followBtn").hasClass("followBtn")) {
         $.ajax({
             type: "get",
             url: "php/follow.php",
             data: { userId: userId, followerId: followerId },
             success: function(res) {
-                $("#followBtn").removeClass('followBtn');
-                $("#followBtn").addClass('unfollowBtn');
+                $("#followBtn").removeClass("followBtn");
+                $("#followBtn").addClass("unfollowBtn");
                 $("#followBtn").html("<bdo dir='rtl'> لابردن </bdo>");
-                $("#followerCount").html(res)
-            }
+                $("#followerCount").html(res);
+            },
         });
     } else {
         $.ajax({
@@ -164,22 +161,22 @@ function follow(userId, followerId) {
             url: "php/unFollow.php",
             data: { userId: userId, followerId: followerId },
             success: function(res) {
-                $("#followBtn").addClass('followBtn');
-                $("#followBtn").removeClass('unfollowBtn');
+                $("#followBtn").addClass("followBtn");
+                $("#followBtn").removeClass("unfollowBtn");
                 $("#followBtn").html("<bdo dir='rtl'>فۆڵۆو</bdo>");
-                $("#followerCount").html(res)
-            }
+                $("#followerCount").html(res);
+            },
         });
     }
-};
+}
 $("#profileImage").change(() => {
-    $("#updateImage").trigger('submit')
+    $("#updateImage").trigger("submit");
 });
 
 function hideMsg() {
     setTimeout(() => {
-        $(".updateMsg").hide()
-    }, 5000)
+        $(".updateMsg").hide();
+    }, 5000);
 }
 hideMsg();
 
@@ -189,11 +186,11 @@ function addBio() {
 
     $("#bioInput").keyup((e) => {
         if ($("#bioInput").val().length == 80) {
-            $("#bioLength").css('color', 'red');
+            $("#bioLength").css("color", "red");
         } else {
-            $("#bioLength").css('color', 'gray');
+            $("#bioLength").css("color", "gray");
         }
-        $("#bioLength").html($("#bioInput").val().length)
+        $("#bioLength").html($("#bioInput").val().length);
     });
 
     $("#updateBioBtn").click(() => {
@@ -206,14 +203,14 @@ function addBio() {
                 url: "php/updateBio.php",
                 data: { bio: bio, userId: user_id },
                 success: function(res) {
-                    $("#bioTxt").html(res)
+                    $("#bioTxt").html(res);
                     $(".add-bio").hide();
-                    $("#bioInput").val("")
-                }
+                    $("#bioInput").val("");
+                },
             });
         }
-    })
-};
+    });
+}
 $(".add-bio-form .btn-close").click(() => {
     $(".add-bio").hide();
 });
@@ -222,17 +219,20 @@ $(".add-bio-form .close").click(() => {
 });
 
 function shareProfile(id) {
-    console.log(id)
+    console.log(id);
     if (navigator.share) {
-        navigator.share({
+        navigator
+            .share({
                 title: "Share this profile",
                 url: `profile.php?id=${id}`,
-                text: "Share this profile"
+                text: "Share this profile",
             })
-            .then(res => {})
-            .catch((err) => { console.log(err) })
+            .then((res) => {})
+            .catch((err) => {
+                console.log(err);
+            });
     }
-};
+}
 $("#showFollowers").click(() => {
     $(".follow-list").show();
     $(".follow-list-container").addClass("an");
@@ -260,24 +260,23 @@ function sendComment(e, comment, postId, userId) {
                 $("#dbn").html("");
                 $(".comments").animate({ scrollTop: $(document).height() }, 10);
                 $("#comment_input").val("");
-            }
+            },
         });
     }
-};
+}
 
 function likeComment(userId, commentId, el) {
-    if ($(el).find('i').hasClass('bi-heart')) {
+    if ($(el).find("i").hasClass("bi-heart")) {
         $.ajax({
             type: "POST",
             url: "php/likeComment.php",
             data: { userId: userId, commentId: commentId },
             success: function(res) {
-                $(el).find('i').addClass('bi-heart-fill');
-                $(el).find('i').removeClass('bi-heart');
-                $(el).find('a').addClass('pop-up');
-                $(el).find('small').html(res)
-
-            }
+                $(el).find("i").addClass("bi-heart-fill");
+                $(el).find("i").removeClass("bi-heart");
+                $(el).find("a").addClass("pop-up");
+                $(el).find("small").html(res);
+            },
         });
     } else {
         $.ajax({
@@ -285,14 +284,22 @@ function likeComment(userId, commentId, el) {
             url: "php/unlikeComment.php",
             data: { userId: userId, commentId: commentId },
             success: function(res) {
-                $(el).find('i').addClass('bi-heart');
-                $(el).find('i').removeClass('bi-heart-fill');
-                $(el).find('a').removeClass('pop-up');
-                $(el).find('small').html(res)
+                $(el).find("i").addClass("bi-heart");
+                $(el).find("i").removeClass("bi-heart-fill");
+                $(el).find("a").removeClass("pop-up");
+                $(el).find("small").html(res);
                 if (res == "") {
-                    $(el).find('small').html(0)
+                    $(el).find("small").html(0);
                 }
-            }
+            },
         });
     }
 }
+$("#title").keyup(() => {
+    let title = $("#title").val();
+    if (title.length == 0) {
+        $("#create").attr("disabled", true);
+    } else {
+        $("#create").removeAttr("disabled");
+    }
+});

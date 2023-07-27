@@ -17,34 +17,58 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <?php include("./layout/logoutForm.php"); ?>
     <?php include("./layout/navbar.php") ?>
-   
-    <div class="container p-5">
-        <form action="php/uploadPost.php" method="post" enctype="multipart/form-data" class="row">
-            <div class="col-6">
-                <div class="form-group mb-3">
-                    <label for="image">
-                        <div class="card border p-5">Image</div>
-                    </label>
-                    <input type="file" name="image" id="image" style="display: none;" accept="image/png, image/jpg, image/jpeg, image/gif">
+
+    <div class="container d-flex justify-content-center pt-4">
+        <form action="php/uploadPost.php" method="post" enctype="multipart/form-data" class="w-50 uplaod-image-form">
+            <div class="form-group mb-4">
+                <label for="image" class="w-100 position-relative" id="image-label">
+                    <div class="card border p-5 w-100 text-center rounded-4" style="cursor: pointer;">
+                        <h1><i class="bi bi-image"></i></h1>
+                        <p><bdo dir="rtl">وێنەیەک هەڵبژێرە</bdo></p>
+                        <div><small class="text-secondary"><i class="bi bi-exclamation-circle me-1"></i><bdo dir="rtl">وێنەکە دەبێت کەمتر بێت لە 5 مێگابایت</bdo></small></div>
+                    </div>
+                    <div class="position-absolute w-100 h-100 rounded-4 top-0 bg-white border" id="previewc" style="display: none;">
+                        <img src="" class="w-100" id="preview">
+                    </div>
+                </label>
+                <input type="file" name="image" id="image" style="display: none;" accept="image/png, image/jpg, image/jpeg, image/gif" onchange="loadFile(event)">
+            </div>
+            <div class="div" id="details" style="display: none;">
+                <div class="form-group mb-3 w-75">
+                    <label for="title">*<bdo dir="rtl">ناونیشان</bdo></label>
+                    <input type="text" name="title" id="title" class="form-control rounded-4">
                 </div>
-                <div class="form-group mb-2">
-                    <label for="title">Title</label>
-                    <input type="text" placeholder="title" name="title" class="form-control">
+                <div class="form-group mb-3 w-75">
+                    <label for="descriprion"><bdo dir="rtl">وەسف</bdo></label>
+                    <textarea type="text" name="description" id="description" class="form-control shadow-none rounded-4" style="resize: none;"></textarea>
                 </div>
-                <div class="form-group mb-2">
-                    <label for="descriprion">Description</label>
-                    <textarea type="text" placeholder="description" name="description" class="form-control"></textarea>
+                <div class="form-group mb-4 w-75">
+                    <label for="tags"><bdo dir="rtl">تاگەکان</bdo></label>
+                    <input type="text" name="tags" id="tags" class="form-control rounded-4">
                 </div>
-                <div class="form-group mb-2">
-                    <label for="tags">Tags</label>
-                    <input type="text" placeholder="tags" name="tags" class="form-control">
+                <div class="form-group mb-3 w-75">
+                    <button class="btn btn-sm post-btn rounded-4 d-flex p-2 text-center w-100" id="create" name="submit" disabled><bdo dir="rtl">پۆست</bdo></button>
                 </div>
-                <div class="form-group mb-1">
-                    <button class="btn btn-sm btn-primary " id="create" name="submit">post</button>
-                </div>
+            </div>
         </form>
     </div>
     </div>
+    <script>
+        imgInp = document.getElementById("image");
+        previewc = document.getElementById("previewc");
+        details = document.getElementById("details");
+        preview = document.getElementById("preview");
+
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                previewc.style.display = "block"
+                details.style.display = "block"
+                preview.src = URL.createObjectURL(file)
+            }
+        }
+
+    </script>
     <script src="js/home.js"></script>
 </body>
 
