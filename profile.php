@@ -31,8 +31,8 @@ if (!isset($_SESSION['user_id'])) {
             <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
             <h4 class="mb-4"><bdo dir="rtl">پۆستی <bdo dir="rtl" id="postId">2</bdo> دەسڕیتەوە؟</bdo></h4>
             <div class="btns">
-                <button class="btn rounded rounded-4" id="cancelDelete"><bdo dir="rtl">نەخێر</bdo></button>
-                <button class="btn btn-primary rounded rounded-4 ms-2" id="deletePost"><bdo dir="rtl">بەڵێ</bdo></button>
+                <button class="btn rounded rounded-4 deletePostBtn" id="cancelDelete"><bdo dir="rtl">نەخێر</bdo></button>
+                <button class="btn btn-primary rounded rounded-4 ms-2 " id="deletePost"><bdo dir="rtl">بەڵێ</bdo></button>
             </div>
         </div>
     </div>

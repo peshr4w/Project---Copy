@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php  include("./layout/head.php"); ?>
-    <title>Document</title>
+    <title>Create</title>
 </head>
 <body>
 

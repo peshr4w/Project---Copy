@@ -96,8 +96,13 @@ section nav.navbar form button {
     }
 }
 
-.logout .logout-form .btns .btn:nth-child(1) {
+.logout .logout-form .btns .btn:nth-child(1),
+.deletePostBtn {
     background: #2D3A3A !important;
+    color: whitesmoke;
+}
+
+.deletePostBtn:hover {
     color: whitesmoke;
 }
 

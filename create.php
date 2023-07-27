@@ -10,7 +10,6 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <?php
     include("./layout/head.php");
-    include("./php/conf.php");
     ?>
     <title>Home</title>
 </head>
@@ -18,23 +17,9 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <?php include("./layout/logoutForm.php"); ?>
     <?php include("./layout/navbar.php") ?>
-    <?php
-    $session_id = $_SESSION['user_id'];
-    $image = $title = $tags =  $description = "";
-    $user_id =  $conn->query("select id from users where session_id = '$session_id'")->fetch_column();
-    if (isset($_POST['submit'])) {
-        $image_name = time() . $_FILES['image']['name'];
-        $image_tmpname = $_FILES['image']['tmp_name'];
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $tags = $_POST['tags'];
-        if (move_uploaded_file($image_tmpname, 'images/uploads/' . $image_name)) {
-            $conn->query("insert into posts(user_id, image, title,description, tags) values('$user_id', '$image_name' ,'$title', '$description','$tags')");
-        }
-    }
-    ?>
+   
     <div class="container p-5">
-        <form action="<?= $_SERVER['PHP_SELF']  ?>" method="post" enctype="multipart/form-data" class="row">
+        <form action="php/uploadPost.php" method="post" enctype="multipart/form-data" class="row">
             <div class="col-6">
                 <div class="form-group mb-3">
                     <label for="image">
