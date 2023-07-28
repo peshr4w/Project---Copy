@@ -1,10 +1,10 @@
 $("#search").on({
     focus: () => {
-        $(".search-result").show();
+        $("#search-result").show();
     },
-    blur: () => {
-        $(".search-result").hide();
-    },
+    // blur: () => {
+    //     $(".search-result").hide();
+    // },
 });
 $(".bars").click(() => {
     if ($(".navbar .dropdown").hasClass("hidden")) {
@@ -313,3 +313,21 @@ function deleteInbox(id, el) {
         success: function(res) {},
     });
 }
+$("#search").keyup(() => {
+    let key = $("#search").val();
+    if (key == "") {
+        $("#search-result").hide();
+    } else {
+        $("#search-result").show();
+    }
+    $.ajax({
+        type: "post",
+        url: "php/search.php",
+        data: { key: key },
+        success: function(res) {
+            console.log(res)
+
+            $(".search-result").html(res)
+        }
+    });
+})

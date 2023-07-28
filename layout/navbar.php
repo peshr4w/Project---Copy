@@ -13,10 +13,7 @@ $row1 = $profile->fetch_assoc();
     </div>
     <div class="search col-8 position-relative">
         <i class="position-absolute fa-solid fa-search"></i>
-        <input type="text" placeholder="گەڕان" id="search" autocomplete="off" class="form-control rounded rounded-5 py-2 ps-5 ">
-        <div class="search-result bg-white  position-absolute rounded rounded-4 p-2 border">
-            <bdo dir="rtl">ئەنجامی گەڕان</bdo>
-        </div>
+        <input type="search" placeholder="گەڕان" id="search" autocomplete="off" class="form-control rounded rounded-5 py-2 ps-5 ">
     </div>
     <div class="profile col-2 d-flex align-items-center justify-content-evenly">
         <a href="create.php" class="create">
@@ -40,7 +37,15 @@ $row1 = $profile->fetch_assoc();
                 <span> <?= $row1['username'] ?></span>
                 <span><?= $row1['email'] ?></span>
             </div>
-            <i class="fa-solid fa-check ms-auto me-3 "></i>
+            <?php
+            $uid = $row1['id'];
+            $is_verified = $row1['verified'];
+            if ($is_verified == "1") { ?>
+                <i class="bi bi-patch-check-fill ms-auto" style="color: dodgerblue;"></i>
+            <?php } else { ?>
+                <i class="bi bi-check ms-auto  "></i>
+            <?php } ?>
+
         </div>
         <a href="home.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-house me-1"></i><bdo dir="rtl">ماڵەوە</bdo>
@@ -57,7 +62,6 @@ $row1 = $profile->fetch_assoc();
         <a href="inbox.php" onclick="removeInboxIcon(<?= $row1['id'] ?>)" class="btn  p-2 border rounded rounded-4 mt-3 ms-1 position-relative">
             <i class="bi bi-bell me-1"></i><bdo dir="rtl"><bdo dir="rtl">ئاگادار کردنەوە</bdo></bdo>
             <?php
-            $uid = $row1['id'];
             $inbox = $conn->query("select inbox from users where id = '$uid'")->fetch_column();
             if ($inbox == "1") { ?>
                 <span class="position-absolute rounded-circle warning" style="width:15px;height: 15px;"></span>
@@ -68,4 +72,7 @@ $row1 = $profile->fetch_assoc();
         </a>
 
     </div>
+</div>
+<div class="search-result bg-white shadow  rounded rounded-4 p-2 border w-75 ms-auto me-auto " id="search-result">
+
 </div>

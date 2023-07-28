@@ -346,12 +346,11 @@ button:focus {
     box-sizing: border-box !important;
 }
 
-.search .search-result {
-    width: 95%;
-    top: 170%;
+#search-result {
+    position: fixed;
     left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
+    transform: translateX(-50%);
+    z-index: 200;
 }
 
 .profile .account {
@@ -858,6 +857,28 @@ button:focus {
     border: 2px solid #fff !important;
 }
 
+.search-result {
+    display: none;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.search-result .user .image {
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+.search-result .post-image {
+    max-height: 100px !important;
+    overflow: hidden;
+}
+
+.search-result .user:hover {
+    background-color: whitesmoke;
+}
+
 @media(max-width:600px) {
     .links {
         display: none;
@@ -943,5 +964,8 @@ button:focus {
     }
     .uplaod-image-form .form-group .post-btn {
         width: 100%;
+    }
+    #search-result {
+        width: 90% !important;
     }
 }

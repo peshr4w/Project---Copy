@@ -143,7 +143,14 @@ if (!isset($_SESSION['user_id'])) {
                     </form>
                 <?php } ?>
                 <div class="details text-center mt-2">
-                    <h4 class="username"><strong> <?= $row['username'] ?></strong></h4>
+                    <h4 class="username">
+                        <strong> <?= $row['username'] ?></strong>
+                        <?php
+                        $is_verified =  $row['verified'];
+                        if ($is_verified == "1") { ?>
+                          <small>  <i class="bi bi-patch-check-fill ms-auto" style="color: dodgerblue;"></i></small>
+                        <?php } ?>
+                    </h4>
                     <small class="username text-secondary"><?= $row['email'] ?></small>
                 </div>
                 <?php
@@ -283,8 +290,8 @@ if (!isset($_SESSION['user_id'])) {
                         </a>
                         <small class="text-secondary p-2 pb-0"><?= $row3['created'] ?></small>
                         <div class="card-title ms-2 ">
-                          <span><?= $row3['title'] ?> </span>  <br>
-                           <span class="text-secondary"> <?= $row3['description'] ?></span>
+                            <span><?= $row3['title'] ?> </span> <br>
+                            <span class="text-secondary"> <?= $row3['description'] ?></span>
                         </div>
                     </div>
                 <?php  }

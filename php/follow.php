@@ -11,6 +11,14 @@ if($res){
     $conn->query("insert into inbox (user_id, sender_id, message, user_link) value('$userId', '$followerId', '$message','$followerId' )");
     $conn->query("update users set inbox = 1 where id = '$userId'");
     $followCount = $conn->query("select count(*) from followers where user_id = '$userId' ")->fetch_column();
+    if($followCount >= 500){
+     $verified = "پیرۆزە، ئەکاونتەکەت ڤێریفای کرا";
+     $is_verified = $conn->query("select verified from users where id = '$userId'")->fetch_column();
+     if($is_verified == "0"){
+     $conn->query("update users set verified = 1");
+     $conn->query("insert into inbox (user_id,sender_id, message ) values('$userId','$followerId', '$verified')");
+     }
+    }
     echo($followCount);
 }
 }
