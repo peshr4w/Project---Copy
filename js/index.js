@@ -102,9 +102,7 @@ $("#signupForm").submit(function(e) {
                 $("#signup-result").css("color", "green");
                 $("#signup-result").html("سەرکەوتوو بوو");
                 $("#signupBtn").attr("disabled");
-                setTimeout(() => {
-                    window.location.href = "home.php";
-                }, 400);
+                window.location.href = "home.php";
             } else {
                 $("#signup-result").html(res);
             }
@@ -127,9 +125,7 @@ $("#loginForm").submit(function(e) {
             if (res == "success") {
                 $("#login-result").css("color", "green");
                 $("#login-result").html("سەرکەوتوو بوو");
-                setTimeout(() => {
-                    window.location.href = "home.php";
-                }, 400);
+                window.location.href = "home.php";
                 $("#loginBtn").attr("disabled");
             } else {
                 $("#login-result").html(res);

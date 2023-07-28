@@ -19,7 +19,7 @@ if (!isset($_SESSION['user_id'])) {
     <?php include("./layout/navbar.php") ?>
 
     <div class="container d-flex justify-content-center pt-4">
-        <form action="php/uploadPost.php" method="post" enctype="multipart/form-data" class="w-50 uplaod-image-form">
+        <form action="uploadPost.php" method="post" enctype="multipart/form-data" class="w-50 uplaod-image-form">
             <div class="form-group mb-4">
                 <label for="image" class="w-100 position-relative" id="image-label">
                     <div class="card border p-5 w-100 text-center rounded-4" style="cursor: pointer;">
@@ -36,18 +36,18 @@ if (!isset($_SESSION['user_id'])) {
             <div class="div" id="details" style="display: none;">
                 <div class="form-group mb-3 w-75">
                     <label for="title">*<bdo dir="rtl">ناونیشان</bdo></label>
-                    <input type="text" name="title" id="title" class="form-control rounded-4">
+                    <input type="text" name="title" id="title" class="form-control rounded-3">
                 </div>
                 <div class="form-group mb-3 w-75">
                     <label for="descriprion"><bdo dir="rtl">وەسف</bdo></label>
-                    <textarea type="text" name="description" id="description" class="form-control shadow-none rounded-4" style="resize: none;"></textarea>
+                    <textarea type="text" name="description" id="description" class="form-control shadow-none rounded-3" style="resize: none;"></textarea>
                 </div>
                 <div class="form-group mb-4 w-75">
                     <label for="tags"><bdo dir="rtl">تاگەکان</bdo></label>
-                    <input type="text" name="tags" id="tags" class="form-control rounded-4">
+                    <input type="text" name="tags" id="tags" class="form-control rounded-3">
                 </div>
                 <div class="form-group mb-3 w-75">
-                    <button class="btn btn-sm post-btn rounded-4 d-flex p-2 text-center w-100" id="create" name="submit" disabled><bdo dir="rtl">پۆست</bdo></button>
+                    <button class="btn btn-sm post-btn rounded-3 p-2 text-center w-100" id="create" name="submit" disabled><bdo dir="rtl">پۆست</bdo></button>
                 </div>
             </div>
         </form>

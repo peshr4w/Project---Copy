@@ -51,7 +51,7 @@ $row1 = $profile->fetch_assoc();
         <a href="create.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="fa-regular fa-square-plus me-1"></i>دروستکردن<bdo dir="rtl"></bdo>
         </a>
-        <a href="#" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
+        <a href="setting.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-gear-wide me-1"></i> <bdo dir="rtl">ڕێکخستن</bdo>
         </a>
         <a href="inbox.php" onclick="removeInboxIcon(<?= $row1['id'] ?>)" class="btn  p-2 border rounded rounded-4 mt-3 ms-1 position-relative">

@@ -310,8 +310,6 @@ function deleteInbox(id, el) {
         type: "get",
         url: "php/deleteInbox.php",
         data: { inboxId: id },
-        success: function(res) {
-
-        }
+        success: function(res) {},
     });
 }
