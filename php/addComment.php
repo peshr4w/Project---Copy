@@ -19,7 +19,7 @@ if ($res) {
     $author_id = $conn->query("select user_id from posts where id = '$postId'")->fetch_column();
     $conn->query("update users set inbox = 1 where id = '$author_id'");
 
-    $message ="کۆمێنتی پۆستەکەتی کردووە";
+    $message ="کۆمێنتی بۆ پۆستێکت کرد";
 
     $conn->query("insert into inbox (user_id, sender_id, message, link, user_link) value( '$author_id','$userId', '$message', '$postId', '$userId')");
 
