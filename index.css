@@ -237,6 +237,24 @@ section nav.navbar form button {
     background-color: #fefae0;
 }
 
+.password-input .btn:hover {
+    border: 0;
+    outline: 0;
+    background-color: transparent !important;
+    color: #2D3A3A !important;
+}
+
+.showHidePass {
+    position: absolute;
+    left: 1.5rem;
+    top: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.showHidePass:hover {
+    background: transparent !important;
+}
+
 .container.images img {
     position: relative;
 }
@@ -827,6 +845,12 @@ button:focus {
     }
     .uplaod-image-form .form-group .post-btn {
         width: 30%;
+    }
+    .showing-post {
+        font-size: 12px !important;
+    }
+    .inbox-message {
+        font-size: 13px !important;
     }
 }
 

@@ -16,6 +16,13 @@ function cleanText($text)
 
 $res = $conn->query("insert into comments(post_id , user_id, comment)  values('$postId', '$userId', '$comment')");
 if ($res) {
+    $author_id = $conn->query("select user_id from posts where id = '$postId'")->fetch_column();
+    $conn->query("update users set inbox = 1 where id = '$author_id'");
+
+    $message ="کۆمێنتی پۆستەکەتی کردووە";
+
+    $conn->query("insert into inbox (user_id, sender_id, message, link, user_link) value( '$author_id','$userId', '$message', '$postId', '$userId')");
+
     $last_comment = $conn->query("select * from comments where post_id = '$postId' order by date desc limit 1")->fetch_assoc();
     $lcu = $conn->query("select * from users where id = '$userId'")->fetch_assoc();
     if ($last_comment) { ?>

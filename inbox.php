@@ -27,13 +27,36 @@ if (!isset($_SESSION['user_id'])) {
             if ($inbox->num_rows > 0) {
                 while ($row = $inbox->fetch_assoc()) {
             ?>
-                    <div class="inbox p-2 mb-3 rounded-4 border d-flex justify-content-between">
+                    <div class="inbox p-2 mb-3 rounded-4 border d-flex justify-content-between align-items-center">
                         <button class="btn border-0 outline-0" onclick="deleteInbox(<?= $row['id'] ?>, this.parentElement)"><i class="bi bi-trash3"></i></button>
+
                         <div class="text-end px-2">
-                            <?= $row['message'] ?> <br>
+                           
+                            <span class="">
+                                <?php
+                                $id = $row['user_link'];
+                                $sender = $conn->query("select * from users where id  = '$id' ")->fetch_assoc();
+                                ?>
+                                <bdo dir="rtl" class="text-secondary me-1 inbox-message" ><?= $row['message'] ?></bdo>
+                                <a href="<?= 'profile.php?id=' . $sender['id'] ?>" class="text-black"><?= $sender['username'] ?></a>
+                            </span>
+                            <br>
+                            <div class="d-flex justify-content-end">
+                            <?php
+                            if ($row['link'] !== "null") { ?>
+                                <small class="me-2">
+                                    <a href="post.php?id=<?= $row['link'] ?>" class="text-black text-decoration-none showing-post">
+                                        <bdo dir="rtl">
+                                        پێشاندانی پۆست
+                                        <i class="bi bi-eye ms-1"></i>
+                                    </bdo>
+                                    </a>
+                                </small>
+                            <?php } ?>
                             <small class="text-secondary" style="font-size: 12px;">
-                                 <?= $row['date'] ?>
+                                <?= $row['date'] ?>
                             </small>
+                            </div>
                         </div>
                     </div>
 

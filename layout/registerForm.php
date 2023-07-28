@@ -10,9 +10,10 @@
           <label for="text" class="mb-1"><bdo dir="rtl">ناوی بەکارهێنەر</bdo></label>
           <input type="text" id="login_username" name="login_username" class="form-control rounded rounded-4 py-2">
         </div>
-        <div class="form-group mb-3" dir="rtl">
+        <div class="form-group mb-3 position-relative password-input" dir="rtl">
           <label for="password" class="mb-1"><bdo dir="rtl">وشەی نهێنی</bdo></label>
           <input type="password" id="login_password" name="login_password" class="form-control rounded rounded-4 py-2">
+          <button class="btn  position-absolute showHidePass border-0 outline-0" onclick="(showHide(this.parentElement))"><i class="bi bi-eye"></i></button>
         </div>
         <div class="input-group d-fex align-items-center justify-content-between" dir="rtl">
           <button class="btn btn-sm btn-outline-primary rounded rounded-4 border-0 loginBtnn" id="loginBtn"><bdo dir="rtl">چونه‌ ژووره‌وه‌</bdo></button>
@@ -41,13 +42,17 @@
           <label for="signup_email" class="mb-1"><bdo dir="rtl">ئیمەیڵ</bdo></label>
           <input type="email" id="signup_email" name="email" class="form-control rounded rounded-4 py-2">
         </div>
-        <div class="form-group mb-3" dir="rtl">
+        <div class="form-group mb-3 position-relative password-input" dir="rtl">
           <label for="signup_password" class="mb-1"><bdo dir="rtl">وشەی نهێنی</bdo></label>
           <input type="password" id="signup_password" name="password" class="form-control rounded rounded-4 py-2">
+          <button class="btn  position-absolute showHidePass border-0 outline-0" onclick="(showHide(this.parentElement))"><i class="bi bi-eye"></i></button>
+
         </div>
-        <div class="form-group mb-3" dir="rtl">
+        <div class="form-group mb-3 position-relative password-input" dir="rtl">
           <label for="signup_repassword" class="mb-1"><bdo dir="rtl">دووبارە وشەی نهێنی بنووسەوە</bdo></label>
           <input type="password" id="signup_repassword" name="repassword" class="form-control rounded rounded-4 py-2">
+          <button class="btn  position-absolute showHidePass border-0 outline-0" onclick="(showHide(this.parentElement))"><i class="bi bi-eye"></i></button>
+
         </div>
         <div class="input-group d-fex align-items-center justify-content-between" dir="rtl">
           <button class="btn btn-sm btn-outline-primary rounded rounded-4 border-0 loginBtnn" id="signupBtn"><bdo dir="rtl">تۆمار كردن</bdo></button>

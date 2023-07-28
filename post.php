@@ -95,7 +95,7 @@ if (!isset($_SESSION['user_id'])) {
                                 $fbt = "<bdo dir='rtl'>فۆڵۆو</bdo>";
                             }
                         ?>
-                            <a href="#" class="btn rounded rounded-4 border ms-2 <?= $fbc ?>" id="followBtn" onclick="follow(<?= $uuid ?>, <?= $uid ?>)">
+                            <a  class="btn rounded rounded-4 border ms-auto <?= $fbc ?>" id="followBtn" onclick="follow(<?= $uuid ?>, <?= $uid ?>)">
                                 <?= $fbt  ?>
                             </a>
                         <?php } ?>
