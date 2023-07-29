@@ -7,7 +7,7 @@
       </div>
       <form class="modal-body" id="loginForm">
         <div class="form-group mb-3" dir="rtl">
-          <label for="text" class="mb-1"><bdo dir="rtl">ناوی بەکارهێنەر</bdo></label>
+          <label for="text" class="mb-1"><bdo dir="rtl">ناوی بەکارهێنەر یان ئیمێڵ</bdo></label>
           <input type="text" id="login_username" name="login_username" class="form-control rounded rounded-4 py-2">
         </div>
         <div class="form-group mb-3 position-relative password-input" dir="rtl">
@@ -16,12 +16,18 @@
           <button class="btn  position-absolute showHidePass border-0 outline-0" onclick="(showHide(this.parentElement))"><i class="bi bi-eye"></i></button>
         </div>
         <div class="input-group d-fex align-items-center justify-content-between" dir="rtl">
+
           <button class="btn btn-sm btn-outline-primary rounded rounded-4 border-0 loginBtnn" id="loginBtn"><bdo dir="rtl">چونه‌ ژووره‌وه‌</bdo></button>
-          <small  class="text-danger"><bdo dir="rtl" id="login-result" ></bdo></small>
+          <small class="text-danger"><bdo dir="rtl" id="login-result"></bdo></small>
+
         </div>
       </form>
       <div class="modal-footer border-0">
+        <small class="text-secondary me-auto">
+          <a href="forgotPassword.php" class="btn" style="font-size: 12px;"><bdo dir="rtl">وشەی نهێنیت لەبیر کردووە؟</bdo></a>
+        </small>
         <button class="btn border-0" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><small><bdo dir="rtl">ئەکاونتت نییە؟</bdo></small> </button>
+
       </div>
     </div>
   </div>

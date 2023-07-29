@@ -19,14 +19,20 @@ if (!isset($_SESSION['user_id'])) {
     include("./php/conf.php");
     ?>
     
-    <div class="switcher pt-3 d-flex justify-content-center shadow-sm ">
+    <div class="switcher pt-3 d-flex justify-content-center">
         <div class="btns">
             <button class="btn bg" id="showPostsResult"><bdo dir="rtl">پۆستەکان</bdo></button>
             <button class="btn" id="showUsersResult"><bdo dir="rtl">بەکارهێنەران</bdo></button>
         </div>
     </div>
-    <div class=" mt-3 position-relative">
-        <div class="posts p-3 px-5 gap-4 position-absolute show bg-white" id="postsResult">
+    <div class="mt-3 position-relative">
+        <div class="result-layer pt-3">
+            <div class="image mx-auto mt-3 d-flex align-items-center justify-content-center flex-column">
+            <img src="svg/plant.svg" alt="" class="w-100"> <br>
+            <small class="d-flex text-center mt-2"><bdo dir="rtl">هیچ شتێک نەدۆزرایەوە</bdo></small>
+            </div>
+        </div>
+        <div class="posts p-3 px-5 gap-4 position-absolute show  bg-white w-100" id="postsResult">
             <?php
             $key = $_GET['key'];
             $posts = $conn->query("select * from posts");
@@ -38,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
                     $users = $conn->query("select * from users where id = '$id'");
                     $users_row = $users->fetch_assoc();
                     if ($key != "") {
-                        if (stristr($row['title'], $key)) {
+                        if (stristr($row['categories'], $key) || stristr($row['title'], $key)) {
             ?>
                             <div class="card mb-4 border-0 position-relative d-flex">
                                 <div class="layer position-absolute  rounded-4 p-3 opacity-0 align-self-end">
@@ -79,14 +85,14 @@ if (!isset($_SESSION['user_id'])) {
                 }
             }   ?>
         </div>
-        <div class="users  position-absolute hide p-3 w-100" id="usersResult">
-            <div class="users py-3 users-result">
+        <div class="users  position-absolute hide p-3 w-100" id="usersResult" style="height: 100vh;">
+            <div class="users  users-result bg-white">
                 <?php
                 $users = $conn->query("select * from users");
                 while ($row1 = $users->fetch_assoc()) {
                     if ($key != "") {
                         if (stristr($row1['username'], $key)) { ?>
-                            <div class="user rounded-4 py-2">
+                            <div class="user rounded-4 mb-2">
                                 <a href="<?= 'profile.php?id=' . $row1['id'] ?>" class="d-flex p-1 rounded-4 text-black text-decoration-none align-items-center">
                                     <div class="image" style="width: 40px; height: 40px;">
                                         <img src="<?= 'images/users/' . $row1['image'] ?>" alt="" class="w-100">

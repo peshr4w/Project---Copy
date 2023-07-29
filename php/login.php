@@ -4,9 +4,9 @@ session_start();
 $res = "";
 
 if (empty($_POST['username'])) {
-    $res =  "ناوی بەکارهێنەر بەتاڵە";
-} else if (strlen($_POST['username']) > 16) {
-    $res =  "ناوی بەکارهێنەر دەبێت کەمتر بێت لە ١٦ پیت";
+    $res =  "ناوی بەکارهێنەر  یان ئیمەیڵ بەتاڵە";
+} else if(strlen($_POST['username'])>30){
+    $res =  "ناوی بەکارهێنەر دەبێت کەمتر بێت لە ٠٣ پیت";
 } else if (empty($_POST['password'])) {
     $res =  "وشەی نهێنی بەتاڵە";
 } else if (strlen($_POST['password']) < 8) {
@@ -14,7 +14,7 @@ if (empty($_POST['username'])) {
 } else {
     $password = md5($_POST['password']);
     $username = strtolower($_POST['username']);
-    $result = $conn->query("select * from users where username = '$username' ");
+    $result = $conn->query("select * from users where username = '$username' or email = '$username' ");
     if ($result->num_rows > 0) {
         $rows = $result->fetch_assoc();
         if ($rows['password'] == $password) {
@@ -24,7 +24,7 @@ if (empty($_POST['username'])) {
             $res = "وشەی نهێنی هەڵەیە";
         }
     } else {
-        $res =  "ناوی بەکارهێنەر بوونی نییە";
+        $res =  "ناوی بەکارهێنەر یان ئیمەیڵ هەڵەیە";
     }
 }
 

@@ -31,7 +31,7 @@ $posts = $conn->query("select * from posts");
 
     while ($row1 = $posts->fetch_assoc()) {
         if ($key != "") {
-            if (stristr($row1['title'], $key)) { ?>
+            if (stristr($row1['categories'], $key) || stristr($row1['title'], $key)) { ?>
                 <div class="post rounded-4 mb-2">
                     <a href="<?= 'post.php?id=' . $row1['id'] ?>" class="d-flex  rounded-4 text-black text-decoration-none align-items-center">
                         <div class="post-image border  rounded-4">

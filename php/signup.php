@@ -15,7 +15,7 @@ $res = "";
         }  else if (!preg_match("/^[a-zA-Z-\_\.\-0-9+]*$/", $_POST['username'])) {
             $res =  "ناوی بەکارهێنەر دەبێت ژمارە , پیت ,_ و . تەنها!";
         } else if (strlen($_POST['username']) > 16) {
-            $res =  "ناوی بەکارهێنەر دەبێت کەمتر بێت لە ١٦ پیت";
+            $res =  "ناوی بەکارهێنەر دەبێت کەمتر بێت لە ٦١ پیت";
         }else if ($result1->num_rows > 0) {
             $res =  "ئیمەیڵ پێشتر بەکارهاتووە";
         }else if (empty($_POST['email'])) {
