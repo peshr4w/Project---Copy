@@ -335,3 +335,11 @@ $("#showUsersResult").click(() => {
     $("#postsResult").hide();
     $("#usersResult").show();
 });
+$(".verify-email-input").keyup(() => {
+    console.log("h")
+    if ($(".verify-email-input").val() == "") {
+        $(".verify-email-btn").attr('disabled', true)
+    } else {
+        $(".verify-email-btn").removeAttr('disabled')
+    }
+})

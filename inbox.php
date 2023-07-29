@@ -57,7 +57,10 @@ if (!isset($_SESSION['user_id'])) {
                                     </small>
                                 <?php } ?>
                                 <small class="text-secondary" style="font-size: 12px;">
-                                    <?= $row['date'] ?>
+                                    <?php
+                                    $cmd =  $row['date'];
+                                    include('php/timeAgo.php');
+                                    ?>
                                 </small>
                             </div>
                         </div>
