@@ -319,8 +319,8 @@ $("#search").keyup(() => {
         url: "php/search.php",
         data: { key: key },
         success: function(res) {
-            $(".search-result").html(res)
-        }
+            $(".search-result").html(res);
+        },
     });
 });
 $("#showPostsResult").click(() => {
@@ -334,12 +334,45 @@ $("#showUsersResult").click(() => {
     $("#showUsersResult").addClass("bg");
     $("#postsResult").hide();
     $("#usersResult").show();
+    if ($(".users-result").html().trim() == "") {
+        $(".users-result").hide();
+    } else {
+        $(".users-result").show();
+    }
 });
 $(".verify-email-input").keyup(() => {
-    console.log("h")
     if ($(".verify-email-input").val() == "") {
-        $(".verify-email-btn").attr('disabled', true)
+        $(".verify-email-btn").attr("disabled", true);
     } else {
-        $(".verify-email-btn").removeAttr('disabled')
+        $(".verify-email-btn").removeAttr("disabled");
     }
-})
+});
+$("#resetEmail").submit((e) => {
+    e.preventDefault();
+    $(".ring").css("display", 'inline')
+    $(".verify-email-btn").attr("disabled", true);
+
+    let email = $(".verify-email-input").val();
+    $.ajax({
+        type: "post",
+        url: "php/resetPassword.php",
+        data: { email: email },
+        success: function(res) {
+
+            if (res == "success") {
+                $(".ring").css("display", 'none')
+                $(".alert").html(
+                    "سەرکەوتو بوو، چێکی ئیمەڵەکەت بکە بۆ لینکی نوێکردنەوەی پاسۆرد"
+                );
+                $(".alert").addClass("success");
+                $(".alert").removeClass("error");
+                $(".verify-email-btn").removeAttr("disabled");
+            } else {
+                $(".alert").html("ببورە , ئیمەیڵەکەت هەڵەیە");
+                $(".alert").removeClass("success");
+                $(".alert").addClass("error");
+            }
+            $(".verify-email-input").val("");
+        },
+    });
+});

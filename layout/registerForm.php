@@ -24,7 +24,7 @@
       </form>
       <div class="modal-footer border-0">
         <small class="text-secondary me-auto">
-          <a href="forgotPassword.php" class="btn" style="font-size: 12px;"><bdo dir="rtl">وشەی نهێنیت لەبیر کردووە؟</bdo></a>
+          <a href="forgotPassword.php" class="btn border-0 outline-0" style="font-size: 12px;"><bdo dir="rtl">وشەی نهێنیت لەبیر کردووە؟</bdo></a>
         </small>
         <button class="btn border-0" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"><small><bdo dir="rtl">ئەکاونتت نییە؟</bdo></small> </button>
 

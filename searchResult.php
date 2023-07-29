@@ -86,7 +86,7 @@ if (!isset($_SESSION['user_id'])) {
             }   ?>
         </div>
         <div class="users  position-absolute hide p-3 w-100" id="usersResult" style="height: 100vh;">
-            <div class="users  users-result bg-white">
+            <div class="users  users-result bg-white" style="height: 100vh;">
                 <?php
                 $users = $conn->query("select * from users");
                 while ($row1 = $users->fetch_assoc()) {
