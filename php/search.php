@@ -4,8 +4,8 @@ $key = $_POST['key'];
 $users = $conn->query("select * from users");
 $posts = $conn->query("select * from posts");
 ?>
-<div class="users">
-    <small class="p-1 mb-2 "><bdo dir="rtl">بەکارهێنەران</bdo></small>
+<small class="p-1 d-flex text-end justify-content-end"><bdo dir="rtl">بەکارهێنەران</bdo></small>
+<div class="users py-3">
     <?php
     while ($row = $users->fetch_assoc()) {
         if ($key != "") {
@@ -20,10 +20,13 @@ $posts = $conn->query("select * from posts");
                         </div>
                     </a>
                 </div>
-    <?php  }
+    <?php  } else {
+            }
         }
     } ?>
-    <small class="p-1 mb-2 mt-3 "><bdo dir='rtl'></bdo>پۆستەکان</small>
+</div>
+<small class="p-1 d-flex text-end justify-content-end"><bdo dir='rtl'></bdo>پۆستەکان</small>
+<div class="posts">
     <?php
 
     while ($row1 = $posts->fetch_assoc()) {
@@ -32,11 +35,12 @@ $posts = $conn->query("select * from posts");
                 <div class="post rounded-4 mb-2">
                     <a href="<?= 'post.php?id=' . $row1['id'] ?>" class="d-flex  rounded-4 text-black text-decoration-none align-items-center">
                         <div class="post-image border  rounded-4">
-                         <img src="<?= 'images/uploads/'. $row1['image'] ?>" alt="" class="w-100">  
+                            <img src="<?= 'images/uploads/' . $row1['image'] ?>" alt="" class="w-100">
                         </div>
                     </a>
                 </div>
-    <?php  }
+    <?php  } else {
+            }
         }
     } ?>
 </div>

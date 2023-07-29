@@ -11,10 +11,10 @@ $row1 = $profile->fetch_assoc();
             <span class="text text-sm mt-1 ms-1">Project</span>
         </a>
     </div>
-    <div class="search col-8 position-relative">
+    <form class="search col-8 position-relative" action="searchResult.php" method="get">
         <i class="position-absolute fa-solid fa-search"></i>
-        <input type="search" placeholder="گەڕان" id="search" autocomplete="off" class="form-control rounded rounded-5 py-2 ps-5 ">
-    </div>
+        <input type="text" placeholder="گەڕان" id="search" name="key" autocomplete="off" class="form-control rounded rounded-5 py-2 ps-5 ">
+    </form>
     <div class="profile col-2 d-flex align-items-center justify-content-evenly">
         <a href="create.php" class="create">
             <button class="btn btn-sm rounded rounded-4 border-none outline-none"><bdo dir="rtl">دروستکردن</bdo></button>
