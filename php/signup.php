@@ -37,9 +37,13 @@ $res = "";
             $session = time();
             $username = secure($_POST['username']);
             $password = md5($_POST['password1']);
-
+            $code = md5("C0D$_".random_ (10000,99999));
+            $av = $conn->query("select security_code from users");
+            if($av->num_rows > 0){
+                $code = md5("C0D$_". random_int(20000,99999));
+            }
             $_SESSION['user_id'] = $session;
-            $sql = "insert into users(username,email,session_id,password) values( '$username','$email','$session','$password')";
+            $sql = "insert into users(username,email,session_id,password, security_code) values( '$username','$email','$session','$password', '$code')";
             if ($conn->query($sql)) {
                 $res = "success";
             }

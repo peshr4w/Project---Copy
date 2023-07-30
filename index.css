@@ -446,7 +446,8 @@ button:focus {
 
 .share a:hover,
 .share a:active,
-.verify-email-btn {
+.verify-email-btn,
+.change-password-btn {
     background: #2D3A3A !important;
     color: whitesmoke;
 }
@@ -1013,7 +1014,8 @@ button:focus {
     #search-result {
         width: 90% !important;
     }
-    #resetEmail .verify-email-btn {
+    #resetEmail .verify-email-btn,
+    #changePassword .change-password-btn {
         width: 100% !important;
     }
     .result-layer .image {

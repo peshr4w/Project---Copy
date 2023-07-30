@@ -3,7 +3,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user_id'])) {
-    // header('Location:home.php');
+    header('Location:home.php');
 }
 ?>
 
@@ -75,7 +75,7 @@ if (isset($_SESSION['user_id'])) {
             <h3 class="text-center"> <img src="svg/password.svg" alt="" width="40px"> <bdo dir="rtl">نوێکردنەوەی وشەی نهێنی</bdo></h3>
             <form id="resetEmail" method="post" class="align-self-end mt-5">
                 <div class="form-group mb-2">
-                    <input type="text" name="email" id="email" placeholder="ئیمەیڵ" class="form-control rounded-4 verify-email-input" autocomplete="off">
+                    <input type="text" name="email" id="vei" placeholder="ئیمەیڵ" class="form-control rounded-4 verify-email-input" autocomplete="off">
                 </div>
                 <div class="form-group d-flex align-items-end">
                     <button class="btn ms-auto verify-email-btn p-1 rounded-4 text-white px-2 w-25" disabled>

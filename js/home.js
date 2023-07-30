@@ -368,12 +368,13 @@ $("#resetEmail").submit((e) => {
     $(".ring").css("display", "inline");
     $(".verify-email-btn").attr("disabled", true);
 
-    let email = $(".verify-email-input").val();
+    let email = $("#vei").val();
     $.ajax({
         type: "post",
         url: "php/resetPassword.php",
         data: { email: email },
         success: function(res) {
+            console.log(res)
             if (res == "success") {
                 $(".ring").css("display", "none");
                 $(".alert").html(
@@ -386,6 +387,7 @@ $("#resetEmail").submit((e) => {
                 $(".alert").html("ببورە , ئیمەیڵەکەت هەڵەیە");
                 $(".alert").removeClass("success");
                 $(".alert").addClass("error");
+                $(".ring").css("display", "none");
             }
             $(".verify-email-input").val("");
         },
