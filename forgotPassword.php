@@ -66,7 +66,9 @@ if (isset($_SESSION['user_id'])) {
 
 <body class="position-relative">
 
-    <div class="alert verify-alert text-center m-3 rounded-4 "></div>
+    <div class="alert verify-alert text-center m-3 rounded-4 ">
+        
+    </div>
     <div class="container d-flex justify-content-center align-items-center h-100">
 
         <div class="col-sm-12 col-md-6 pt-5" style="height: 100vh;">

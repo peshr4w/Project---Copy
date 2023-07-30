@@ -95,7 +95,7 @@ if (!isset($_SESSION['user_id'])) {
                                 $fbt = "<bdo dir='rtl'>فۆڵۆو</bdo>";
                             }
                         ?>
-                            <a  class="btn rounded rounded-4 border ms-auto <?= $fbc ?>" id="followBtn" onclick="follow(<?= $uuid ?>, <?= $uid ?>)">
+                            <a class="btn rounded rounded-4 border ms-auto <?= $fbc ?>" id="followBtn" onclick="follow(<?= $uuid ?>, <?= $uid ?>)">
                                 <?= $fbt  ?>
                             </a>
                         <?php } ?>
@@ -179,6 +179,55 @@ if (!isset($_SESSION['user_id'])) {
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="mt-5 mb-4 text-center"><bdo dir="rtl">زیاتری وەک ئەم بابەتە</bdo></div>
+        <div class="posts p-3 px-5 gap-4  bg-white w-100" id="postsResult">
+            <?php
+            $key = $post['categories'];
+            $posts = $conn->query("select * from posts");
+
+            if ($posts->num_rows > 0) {
+
+                while ($rowp = $posts->fetch_assoc()) {
+                    $aid = $rowp['user_id'];
+                    $users = $conn->query("select * from users where id = '$aid'");
+                    $users_row = $users->fetch_assoc();
+                    if ($key != "") {
+                        if (stristr($rowp['categories'], $key) || stristr($rowp['title'], $key)) {
+            ?>
+                            <div class="card mb-4 border-0 position-relative d-flex">
+                                <div class="layer position-absolute  rounded-4 p-3 opacity-0 align-self-end">
+                                    <div class="">
+                                        <?php
+                                        $sid = $_SESSION['user_id'];
+                                        $pid = $rowp['id'];
+                                        $usrid = $conn->query("select id from users where session_id = '$sid' ")->fetch_column();
+                                        $likes = $conn->query("select post_id from likes where user_id = '$usrid' and post_id = '$pid' ");
+                                        if ($likes->num_rows > 0) {
+                                            $class = "bi-heart-fill";
+                                        } else {
+                                            $class = "bi-heart";
+                                        }
+                                        ?>
+                                        <button class="btn border-0 rounded-4 likePost me-1" value="<?= $rowp['id'] ?>"><i class="bi  <?= $class ?>"></i></button>
+                                        <a href="<?= 'images/uploads/' .  $rowp['image'] ?>" download class="btn border-0 rounded-4 me-1"><i class="bi bi-download"></i></a>
+                                        <button class="btn border-0 rounded-4  sharePost sharePostBtn" style="background: whitesmoke;" onclick="sharePost(<?= $rowp['id'] ?>)"><i class="bi bi-share-fill"></i></button>
+                                    </div>
+                                </div>
+                                <a href="<?= 'post.php?id=' . $rowp['id'] ?>" class="post-image position-relative">
+                                    <div class="layer position-absolute  rounded-4 p-3 w-100 h-100 opacity-0">
+
+                                    </div>
+                                    <img src="<?= 'images/uploads/' .  $rowp['image'] ?>" alt="<?= $users_row['username'] ?>" class="rounded rounded-4 w-100">
+                                </a>
+                                <p class="card-title ms-2 mt-2"><?= $rowp['title'] ?></p>
+                                
+                            </div>
+
+            <?php }
+                    }
+                }
+            }   ?>
         </div>
     </div>
     <?php

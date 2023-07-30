@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 @font-face {
     font-family: peshang;
     src: url("./fonts/Peshang_Des_5_Bold.ttf");
@@ -573,6 +574,10 @@ button:focus {
 .card .layer .btn:nth-child(3)l {
     background-color: whitesmoke !important;
     color: black;
+}
+
+.layer .sharePost {
+    background-color: whitesmoke !important;
 }
 
 .card .layer .btn:hover {

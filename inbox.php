@@ -29,9 +29,7 @@ if (!isset($_SESSION['user_id'])) {
             ?>
                     <div class="inbox p-2 mb-3 rounded-4 border d-flex justify-content-between align-items-center">
                         <button class="btn border-0 outline-0" onclick="deleteInbox(<?= $row['id'] ?>, this.parentElement)"><i class="bi bi-trash3"></i></button>
-
                         <div class="text-end px-2">
-
                             <span>
                                 <?php
                                 if ($row['user_link'] != "null") {

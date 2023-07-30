@@ -1,3 +1,19 @@
+if ($(window).width() < 900) {
+    $("#icon").attr("src", "./icon-sm.png");
+    $("#icon").css('width', '50px');
+} else {
+    $("#icon").attr("src", "./icon.png");
+    $("#icon").css('width', '150px');
+}
+$(window).resize(() => {
+    if ($(window).width() < 900) {
+        $("#icon").attr("src", "./icon-sm.png");
+        $("#icon").css('width', '50px');
+    } else {
+        $("#icon").attr("src", "./icon.png");
+        $("#icon").css('width', '150px');
+    }
+});
 $(".bars").click(() => {
     if ($(".navbar .dropdown").hasClass("hidden")) {
         $(".navbar .dropdown").addClass("display");
@@ -349,7 +365,7 @@ $(".verify-email-input").keyup(() => {
 });
 $("#resetEmail").submit((e) => {
     e.preventDefault();
-    $(".ring").css("display", 'inline')
+    $(".ring").css("display", "inline");
     $(".verify-email-btn").attr("disabled", true);
 
     let email = $(".verify-email-input").val();
@@ -358,9 +374,8 @@ $("#resetEmail").submit((e) => {
         url: "php/resetPassword.php",
         data: { email: email },
         success: function(res) {
-
             if (res == "success") {
-                $(".ring").css("display", 'none')
+                $(".ring").css("display", "none");
                 $(".alert").html(
                     "سەرکەوتو بوو، چێکی ئیمەڵەکەت بکە بۆ لینکی نوێکردنەوەی پاسۆرد"
                 );

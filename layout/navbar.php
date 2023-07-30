@@ -6,9 +6,8 @@ $row1 = $profile->fetch_assoc();
 ?>
 <div class="navbar  bg-white px-4 py-3">
     <div class="brand col-2 d-flex">
-        <a href="home.php" class="brand d-flex align-items-center text-decoration-none text-black">
-            <img src="svg/icon.svg" alt="icon" width="30px">
-            <span class="text text-sm mt-1 ms-1">Project</span>
+        <a href="home.php" class="brand  text-decoration-none text-black">
+            <img src="icon.png" alt="icon" width="150px" id="icon">
         </a>
     </div>
     <form class="search col-8 position-relative" action="searchResult.php" method="get">
