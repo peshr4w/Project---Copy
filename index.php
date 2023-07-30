@@ -18,7 +18,7 @@ if (isset($_SESSION['user_id'])) {
         <section class="h-100 bg-light" id="section1">
             <nav class="navbar py-3">
                 <div class="d-flex px-4  justify-content-between w-100" dir="ltr">
-                    <a href="#" class="navbar-brand"><img src="svg/icon.svg" alt="icon" width="50px"></a>
+                    <a href="index.php" class="navbar-brand" id="iconc" style="overflow: hidden;"><img src="" id="icon" alt="icon" width="100%"></a>
                     <div class="d-flex  align-items-center">
                         <nav class="links me-5">
                             <ul class="d-flex m-0 p-0 list-unstyled">
@@ -102,11 +102,11 @@ if (isset($_SESSION['user_id'])) {
                 </div>
                 <div class="col col-12 col-md-6"></div>
             </div>
-            
+
         </section>
         <footer style="background-color:  #2D3A3A;" class="p-3">
-                <span class="text-secondary">Created by <span style="color:lightgray">@peshraw</span>  <span id="year"></span> </span>
-            </footer>
+            <span class="text-secondary">Created by <span style="color:lightgray">@peshraw</span> <span id="year"></span> </span>
+        </footer>
     </div>
 
     <script>
@@ -114,6 +114,24 @@ if (isset($_SESSION['user_id'])) {
         $("#year").html(year)
     </script>
     <?php include("./layout/links.php") ?>
+    <script>
+        if ($(window).width() < 900) {
+            $("#icon").attr("src", "./icon-sm.png");
+            $("#iconc").css('width', '50px');
+        } else {
+            $("#icon").attr("src", "./icon.png");
+            $("#iconc").css('width', '150px');
+        }
+        $(window).resize(() => {
+            if ($(window).width() < 900) {
+                $("#icon").attr("src", "./icon-sm.png");
+                $("#iconc").css('width', '50px');
+            } else {
+                $("#icon").attr("src", "./icon.png");
+                $("#iconc").css('width', '150px');
+            }
+        });
+    </script>
 
 </body>
 

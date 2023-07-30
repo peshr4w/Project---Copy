@@ -1,17 +1,17 @@
 if ($(window).width() < 900) {
     $("#icon").attr("src", "./icon-sm.png");
-    $("#icon").css('width', '50px');
+    $("#iconc").css('width', '50px');
 } else {
     $("#icon").attr("src", "./icon.png");
-    $("#icon").css('width', '150px');
+    $("#iconc").css('width', '150px');
 }
 $(window).resize(() => {
     if ($(window).width() < 900) {
         $("#icon").attr("src", "./icon-sm.png");
-        $("#icon").css('width', '50px');
+        $("#iconc").css('width', '50px');
     } else {
         $("#icon").attr("src", "./icon.png");
-        $("#icon").css('width', '150px');
+        $("#iconc").css('width', '150px');
     }
 });
 $(".bars").click(() => {
