@@ -61,13 +61,17 @@ if (isset($_SESSION['user_id'])) {
                     stroke-dashoffset: -124px;
                 }
             }
+
+            input:focus {
+                border: 1px solid #2D3A3A;
+            }
         </style>
     </head>
 
 <body class="position-relative">
 
     <div class="alert verify-alert text-center m-3 rounded-4 ">
-        
+
     </div>
     <div class="container d-flex justify-content-center align-items-center h-100">
 
@@ -89,7 +93,7 @@ if (isset($_SESSION['user_id'])) {
                     </button>
                 </div>
                 <small class="text-secondary d-flex justify-content-center mt-3">
-                    <bdo dir="rtl" style="font-size: 12px;" >
+                    <bdo dir="rtl" style="font-size: 12px;">
                         ئیمەیڵەکەت بنوسە پاشان لینکی نوێکردنەوەی پاسوۆردت لە ڕێگەی ئیمەیڵەکەوە پێدەگات
                     </bdo>
                 </small>

@@ -24,7 +24,6 @@ if (isset($_SESSION['user_id'])) {
                             <ul class="d-flex m-0 p-0 list-unstyled">
                                 <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">دەربارە</bdo> </a></li>
                                 <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">بلۆگ</bdo> </a></li>
-                                <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">بزنس</bdo> </a></li>
                             </ul>
                         </nav>
                         <form class="d-flex" id="register">
