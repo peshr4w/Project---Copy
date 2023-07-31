@@ -12,7 +12,7 @@ $posts = $conn->query("select * from posts");
             if (stristr($row['username'], $key)) { ?>
                 <div class="user rounded-4">
                     <a href="<?= 'profile.php?id=' . $row['id'] ?>" class="d-flex p-1 rounded-4 text-black text-decoration-none align-items-center">
-                        <div class="image">
+                        <div class="image border">
                             <img src="<?= 'images/users/' . $row['image'] ?>" alt="" class="w-100">
                         </div>
                         <div class="details ms-2">

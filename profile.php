@@ -55,8 +55,8 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div class="follow-list position-fixed top-0 left-0 w-100 h-100">
-        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 ">
-            <div class="d-flex p-3 pb-2 shadow-sm">
+        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 " style="overflow: hidden;">
+            <div class="d-flex p-3 pb-2 ">
                 <span><bdo dir="rtl">فۆڵۆوەرەکان</bdo></span>
                 <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
             </div>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['user_id'])) {
                         while ($FAID_row = $followerAcc->fetch_assoc()) { ?>
                             <div class="follower_acc d-flex rounded-4 p-1 mb-1">
                                 <a href="<?= 'profile.php?id=' . $FAID_row['id'] ?>" class="d-flex align-items-center text-decoration-none w-100 ">
-                                    <div class="image">
+                                    <div class="image border">
                                         <img src="<?= './images/users/' . $FAID_row['image'] ?>" alt="<?= $FAID_row['username'] ?>" class="w-100">
                                     </div>
                                     <div class="detail ms-2 d-flex align-items-start justify-content-start flex-column">
@@ -89,8 +89,8 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div class="following-list position-fixed top-0 left-0 w-100 h-100">
-        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 ">
-            <div class="d-flex p-3 pb-2 shadow-sm">
+        <div class="follow-list-container rounded bg-white rounded-4 text-center  shadow mx-auto w-25 "  style="overflow: hidden;">
+            <div class="d-flex p-3 pb-2 ">
                 <span><bdo dir="rtl">فۆڵۆو کراوەکان</bdo></span>
                 <button class="close ms-auto btn-close btn-sm d-flex mb-2"></button>
             </div>
@@ -105,7 +105,7 @@ if (!isset($_SESSION['user_id'])) {
                         while ($FAID_row1 = $followingAcc->fetch_assoc()) { ?>
                             <div class="follower_acc d-flex rounded-4 p-1 mb-1">
                                 <a href="<?= 'profile.php?id=' . $FAID_row1['id'] ?>" class="d-flex align-items-center text-decoration-none w-100 ">
-                                    <div class="image">
+                                    <div class="image border">
                                         <img src="<?= './images/users/' . $FAID_row1['image'] ?>" alt="<?= $FAID_row1['username'] ?>" class="w-100">
                                     </div>
                                     <div class="detail ms-2 d-flex align-items-start justify-content-start flex-column">

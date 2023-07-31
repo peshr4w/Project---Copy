@@ -10,11 +10,13 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <?php include("./layout/head.php") ?>
     <title>Register</title>
+
 </head>
 
 <body>
     <?php include('./layout/registerForm.php')  ?>
     <div class="container-fluid p-0 w-100">
+
         <section class="h-100 bg-light" id="section1">
             <nav class="navbar py-3">
                 <div class="d-flex px-4  justify-content-between w-100" dir="ltr">
@@ -22,8 +24,8 @@ if (isset($_SESSION['user_id'])) {
                     <div class="d-flex  align-items-center">
                         <nav class="links me-5">
                             <ul class="d-flex m-0 p-0 list-unstyled">
-                                <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">دەربارە</bdo> </a></li>
-                                <li class="mx-2"><a href="#" class="text-decoration-none"><bdo dir="rtl">بلۆگ</bdo> </a></li>
+                                <li class="mx-2"><a href="#about" class="text-decoration-none"><bdo dir="rtl">دەربارە</bdo> </a></li>
+                                <li class="mx-2"><a href="#about" class="text-decoration-none"><bdo dir="rtl">بلۆگ</bdo> </a></li>
                             </ul>
                         </nav>
                         <form class="d-flex" id="register">
@@ -100,6 +102,19 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                 </div>
                 <div class="col col-12 col-md-6"></div>
+            </div>
+
+        </section>
+        <section class="h-100" id="about">
+            <div class="row h-100">
+            <div class="col col-12 col-md-6"></div>
+                <div class="col col-12 col-md-6 d-flex align-items-center">
+                    <div class="container position-relative">
+                        <img src="icon.png" alt="logo" width="150px">
+                        <p><bdo dir="rtl">وێبسایتی وێنەکان</bdo></p>
+                    </div>
+                </div>
+              
             </div>
 
         </section>
