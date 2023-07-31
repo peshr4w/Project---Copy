@@ -25,17 +25,35 @@
 
         $image_tmpname = $_FILES['image']['tmp_name'];
         $post_id = "";
+        $ext =  strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
         if ($_FILES["image"]["size"] >  5242880) {
             $error = "قەبارەی وێنەکە دەبێت کەمتر بێت لە ٥ مێگابایت";
-        } else {
+        }
+         elseif ($ext != "png" || $ext != "jpg" || $ext != "jpeg" || $ext != "gif") {
+            $error = "ببورە کێشەیەک هەیە، تکایە هەوڵبدەرەوە";
+        } 
+        else {
             $image_name = time() . $_FILES['image']['name'];
             $title = $_POST['title'];
 
             $description = $_POST['description'];
             $tags = $_POST['tags'];
             if (move_uploaded_file($image_tmpname, 'images/uploads/' . $image_name)) {
-               
+
                 $conn->query("insert into posts(user_id, image, title,description, tags) values('$user_id', '$image_name' ,'$title', '$description','$tags')");
+
+                $followers = $conn->query("select *  from followers where user_id = '$user_id'");
+                if($followers->num_rows > 0){
+                  while($follower = $followers->fetch_assoc()){
+                    $follower_id = $follower['follower_id'];
+
+                    $conn->query("update users set inbox = 1 where id = '$follower_id'");
+                    $message = "پۆستێکی نوێی کرد";
+                    $link  = $conn->query("select id from posts order by created desc limit 1 ")->fetch_column();
+                    $conn->query("insert into inbox (user_id, sender_id, message,link , user_link) value('$follower_id', '$user_id', '$message','$link' ,'$user_id' )");
+                  }
+                }
+
                 $post_id = $conn->query("select id from posts where image = '$image_name' ")->fetch_column();
                 $uploaded_image =  $conn->query("select image from posts where image = '$image_name'")->fetch_column();
                 echo "<input type='hidden' id='uploadedImage' value='$uploaded_image'>";
@@ -47,7 +65,7 @@
 
         <?php
         if ($error != "") { ?>
-            <div class="card p-2 text-center mt-5">
+            <div class="card p-2 text-center mt-5 rounded-4">
                 <div> <?= $error ?></div>
                 <a href="./create.php" class="text-secondary"><bdo dir="rtl">وێنەیەکی تر هەڵبژێرە</bdo></a>
             </div>
@@ -60,7 +78,7 @@
         <?php } else { ?>
             <div class="card p-2 text-center mt-5 rounded-4">
                 <div> <img src="svg/success.svg" alt="" width="20px"> <bdo dir="rtl">وێنەکە بە سەرکەوتوویی پۆست کرا</bdo></div>
-                <a href="<?= 'post.php?id='. $post_id ?>" class="text-secondary"><bdo dir="rtl">پۆستەکە ببینە</bdo></a>
+                <a href="<?= 'post.php?id=' . $post_id ?>" class="text-secondary"><bdo dir="rtl">پۆستەکە ببینە</bdo></a>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-md-4 text-center">

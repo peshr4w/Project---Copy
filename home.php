@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 
 <head>
     <?php include("./layout/head.php"); ?>
-    <title>Home</title>
+    <title>Wenakan</title>
 </head>
 
 <body>

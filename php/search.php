@@ -1,6 +1,13 @@
 <?php
 include('conf.php');
-$key = $_POST['key'];
+$key = secure($_POST['key']);
+function secure($data)
+{
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    $data = trim($data);
+    return $data;
+}
 $users = $conn->query("select * from users");
 $posts = $conn->query("select * from posts");
 ?>

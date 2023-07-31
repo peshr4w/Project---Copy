@@ -10,14 +10,15 @@ if (!isset($_SESSION['user_id'])) {
     <?php
     include("./layout/head.php");
     ?>
-    <title>Home</title>
+    <title>Inbox</title>
 </head>
 
 <body>
 
     <?php include("./php/conf.php"); ?>
-    <?php include("./layout/logoutForm.php"); ?>
+    
     <?php include("./layout/navbar.php") ?>
+    <?php include("./layout/logoutForm.php"); ?>
     <div class="container py-5">
         <div class="warnings">
             <?php

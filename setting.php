@@ -28,19 +28,23 @@ if (!isset($_SESSION['user_id'])) {
         }
 
 
-        .delete-modal, .btns button:nth-child(2) {
+        .delete-modal,
+        .btns button:nth-child(2) {
             background-color: #2D3A3A !important;
             color: whitesmoke;
         }
 
-        .delete-modal , .change-modal{
+        .delete-modal,
+        .change-modal {
             margin-top: 100px;
             background-color: white !important;
             color: black;
         }
 
         @media(min-width:600px) {
-            .delete-modal, .change-modal {
+
+            .delete-modal,
+            .change-modal {
                 width: 25% !important;
                 margin-left: auto !important;
                 margin-right: auto !important;
@@ -51,14 +55,16 @@ if (!isset($_SESSION['user_id'])) {
             background-color: rgba(0 255 0/10%);
             color: green;
         }
+
         .alert2 {
             background-color: rgba(255 0 0/10%);
             color: res;
         }
-        /* .change:hover{
+
+        .change:hover {
             background-color: #2D3A3A;
             color: whitesmoke;
-        } */
+        }
     </style>
 </head>
 
@@ -77,7 +83,7 @@ if (!isset($_SESSION['user_id'])) {
         <bdo dir="rtl">سەرکەوتو بوو</bdo>
     </div>
     <div class="alert2 text-center  mx-5 rounded-4 p-2 mb-0" style="display: none;">
-    <bdo dir="rtl">تکایە دڵنیابە ئیمەڵەکەت بەڕاستی نوسیوە</bdo>
+        <bdo dir="rtl">تکایە دڵنیابە ئیمەڵەکەت بەڕاستی نوسیوە</bdo>
     </div>
     <div id="delete-posts" class="sh delete-posts position-absolute w-100 h-100  align-items-center justify-content-center" style="display: none;">
         <div class="delete-modal mx-5 border rounded-4 shadow-sm p-3 bg-white">
@@ -184,7 +190,7 @@ if (!isset($_SESSION['user_id'])) {
     <script>
         $("#delete-form").submit((e) => {
             e.preventDefault()
-        })
+        });
 
         function showDeletePosts() {
             $("#delete-posts").show()
@@ -201,73 +207,76 @@ if (!isset($_SESSION['user_id'])) {
                             success: function(res) {
                                 if (res == "deleted") {
                                     $("#delete-posts").hide()
-                                    $(".alert").shiw();
+                                    $(".alert").show();
+                                    $("#delete-posts .confirm-code").val("")
                                     setTimeout(() => {
                                         $(".alert").hide();
                                     }, 3000)
                                 }
                             }
                         });
-                    })
+                    });
                 } else {
                     $("#delete-posts .delete").attr('disabled', true);
                 }
-            })
+            });
         }
 
         function hideDeletePosts() {
-            $("#delete-posts").hide()
+            $("#delete-posts").hide();
         }
 
         function showDeleteLikes() {
-            $("#delete-likes").show()
-            $("#delete-likes .delete-modal").addClass('an')
+            $("#delete-likes").show();
+            $("#delete-likes .delete-modal").addClass('an');
             $("#delete-likes .code").html(Math.floor(Math.random() * 99999));
 
             $("#delete-likes .confirm-code").keyup(() => {
                 if ($("#delete-likes .confirm-code").val() == $("#delete-likes .code").html()) {
                     $("#delete-likes .delete").removeAttr('disabled');
-                    $("#delete-likes .delete").click(() => {
+                    $("#delete-likes .delete").unbind('click').bind('click', () => {
                         $.ajax({
                             type: "POST",
                             url: "php/deleteAllLikes.php",
                             success: function(res) {
                                 if (res == "deleted") {
-                                    $("#delete-likes").hide()
+                                    $("#delete-likes").hide();
                                     $(".alert").show();
+                                    $("#delete-likes .confirm-code").val("");
                                     setTimeout(() => {
                                         $(".alert").hide();
                                     }, 3000)
                                 }
                             }
                         });
-                    })
+                    });
                 } else {
-                    $("#delete-likes .delete").attr('disabled', true)
+                    $("#delete-likes .delete").attr('disabled', true);
                 }
-            })
+            });
         }
 
         function hideDeleteLikes() {
-            $("#delete-likes").hide()
+            $("#delete-likes").hide();
         }
 
         function showDeleteComments() {
-            $("#delete-comments").show()
-            $("#delete-comments .delete-modal").addClass('an')
+            $("#delete-comments").show();
+            $("#delete-comments .delete-modal").addClass('an');
             $("#delete-comments .code").html(Math.floor(Math.random() * 99999));
 
             $("#delete-comments .confirm-code").keyup(() => {
                 if ($("#delete-comments .confirm-code").val() == $("#delete-comments .code").html()) {
                     $("#delete-comments .delete").removeAttr('disabled');
-                    $("#delete-comments .delete").click(() => {
+                    $("#delete-comments .delete").unbind('click').bind('click', () => {
                         $.ajax({
                             type: "POST",
                             url: "php/deleteAllComments.php",
                             success: function(res) {
                                 if (res == "deleted") {
-                                    $("#delete-comments").hide()
+                                    $("#delete-comments").hide();
                                     $(".alert").show();
+                                    $("#delete-comments .confirm-code").val("");
                                     setTimeout(() => {
                                         $(".alert").hide();
                                     }, 3000)
@@ -276,31 +285,32 @@ if (!isset($_SESSION['user_id'])) {
                         });
                     })
                 } else {
-                    $("#delete-comments .delete").attr('disabled', true)
+                    $("#delete-comments .delete").attr('disabled', true);
                 }
-            })
+            });
         }
 
         function hideDeleteComments() {
-            $("#delete-comments").hide()
+            $("#delete-comments").hide();
         }
 
         function showDeleteAccount() {
-            $("#delete-account").show()
-            $("#delete-account .delete-modal").addClass('an')
+            $("#delete-account").show();
+            $("#delete-account .delete-modal").addClass('an');
             $("#delete-account .code").html(Math.floor(Math.random() * 99999999));
 
             $("#delete-account .confirm-code").keyup(() => {
                 if ($("#delete-account .confirm-code").val() == $("#delete-account .code").html()) {
                     $("#delete-account .delete").removeAttr('disabled');
-                    $("#delete-account .delete").click(() => {
+                    $("#delete-account .delete").unbind('click').bind('click', () => {
                         $.ajax({
                             type: "POST",
                             url: "php/deleteAccount.php",
                             success: function(res) {
                                 if (res == "deleted") {
-                                    $("#delete-account").hide()
+                                    $("#delete-account").hide();
                                     $(".alert").show();
+                                    $("#delete-account .confirm-code").val("")
                                     setTimeout(() => {
                                         $(".alert").hide();
                                         location.reload()
@@ -308,7 +318,7 @@ if (!isset($_SESSION['user_id'])) {
                                 }
                             }
                         });
-                    })
+                    });
                 } else {
                     $("#delete-account .delete").attr('disabled', true)
                 }
@@ -316,48 +326,52 @@ if (!isset($_SESSION['user_id'])) {
         }
 
         function hideDeleteAccount() {
-            $("#delete-account").hide()
+            $("#delete-account").hide();
         }
 
         function showChangeEmail() {
-            $("#change-email").show()
-            $("#change-email .change-modal").addClass('an')
+            $("#change-email").show();
+            $("#change-email .change-modal").addClass('an');
             $("#change-email .code").html(Math.floor(Math.random() * 99999));
-            let new_email  = $("#email").val();
+            let new_email = $("#email").val();
 
             $("#change-email .confirm-code").keyup(() => {
                 if ($("#change-email .confirm-code").val() == $("#change-email .code").html()) {
                     $("#change-email .change").removeAttr('disabled');
-                    $("#change-email .change").click(() => {
+                    $("#change-email .change").unbind('click').bind('click', () => {
                         $.ajax({
                             type: "POST",
                             url: "php/changeEmail.php",
-                            data:{email:new_email},
+                            data: {
+                                email: new_email
+                            },
                             success: function(res) {
                                 if (res == "changed") {
-                                    $("#change-email").hide()
+                                    $("#change-email").hide();
                                     $(".alert").show();
+                                    $("#change-email .confirm-code").val("")
                                     setTimeout(() => {
                                         $(".alert").hide();
                                     }, 3000)
-                                }else{
-                                    $("#change-email").hide()
+                                } else {
+                                    $("#change-email").hide();
                                     $(".alert2").show();
+                                    $("#change-email .confirm-code").val("")
                                     setTimeout(() => {
                                         $(".alert2").hide();
                                     }, 3000)
                                 }
                             }
                         });
-                    })
+                    });
                 } else {
-                    $("#change-email .change").attr('disabled', true)
+                    $("#change-email .change").attr('disabled', true);
                 }
-            })
+            });
         }
 
         function hideChangeEmail() {
-            $("#change-email").hide()
+            $("#change-email").hide();
         }
     </script>
 </body>

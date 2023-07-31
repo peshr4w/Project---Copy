@@ -821,6 +821,8 @@ button:focus {
     background-color: rgba(0 0 0 /10%) !important;
 }
 
+#about {}
+
 @media(max-width:900px) {
     .image-container {
         display: block !important;

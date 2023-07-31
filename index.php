@@ -9,7 +9,7 @@ if (isset($_SESSION['user_id'])) {
 
 <head>
     <?php include("./layout/head.php") ?>
-    <title>Register</title>
+    <title>wenakan</title>
 
 </head>
 
@@ -96,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="row h-100">
                 <div class="col col-12 col-md-6 d-flex align-items-center">
                     <div class="container position-relative">
-                        <h2 class="text-center mb-3 text-white">دروستی بکە، سەیڤ بکە , بڵاوی بکەرەوە</h2>
+                        <h2 class="text-center mb-3 text-white">دروستی بکە، لایک بکە , بڵاوی بکەرەوە</h2>
                         <h5 class="text-center w-75 mx-auto text-white">ستایلێکی سەرسوڕهێنەر دروست بکە و بەشی بکە , یان بیرۆکە لە کەسانی تر وەربگرە</h5>
                         <a href="home.php" class="btn expolore2 position-absolute mt-4 border-0 rounded rounded-5 pt-1 mx-2 text-center ms-auto text-white">بگەڕێ</a>
                     </div>
@@ -105,16 +105,36 @@ if (isset($_SESSION['user_id'])) {
             </div>
 
         </section>
-        <section class="h-100" id="about">
+        <section class="h-100 bg-light" id="about">
             <div class="row h-100">
-            <div class="col col-12 col-md-6"></div>
-                <div class="col col-12 col-md-6 d-flex align-items-center">
+                <div class="col col-12 p-5">
                     <div class="container position-relative">
-                        <img src="icon.png" alt="logo" width="150px">
-                        <p><bdo dir="rtl">وێبسایتی وێنەکان</bdo></p>
+                        <div class="text-center mb-3">
+                            <img src="icon.png" alt="logo" width="150px" class="mx-auto">
+                        </div>
+                        <div class="text-end d-flex justify-content-end flex-column align-items-end">
+                            <h5><bdo dir="rtl">وێنەکان</bdo></h5> 
+                            <p style="max-width: 400px;">
+                                <bdo dir="rtl"> وێبسایتێکی تایبەت بە بڵاوکردنەوەی وێنەکان وەک وێنەی فۆتۆگرافی، کەسی، بابەتی هونەری، کەسایەتیەکان و هەتا دوایی.</bdo> <br>
+                                <bdo dir="rtl"> بۆ بەکارهێنان هەژمارێک دروست بکە و ئەو وێنانەی دەتەوێت پۆستیان بکە یان دایان بەزێنە ، دەتوانی فۆڵۆی ئەوانی تر بکەیت و لایکی پۆستەکانیان بکەیت وئاگادار بیت نوێترین پۆستیان.</bdo> <br>
+                                <bdo dir="rtl">یەکێک لە تایبەتمەندیەکانی ئەم وێبسایتە بریتیە لە بەکار هێنانی زیرەکی دەستکرد بۆ دیاریکردنی جۆری وێنەکان و سرینەوەی وێنە نەشیاوەکان</bdo>  <br>
+                                <bdo dir="rtl">تکایە دوربە لە بڵاوکردنەوەی هەر وێنەیەکی نەشیاو  یان بابەتێک کە ڕەزامەندی ئەوانی تری لەسەر نەبێت، لەکاتی هەبونی هەر حاڵەتێکی لەو جۆرە هەژمارەکەت دەسرێتەوە</bdo>
+
+                            </p>
+                            <small class="text-secondary">
+                                <bdo dir="rtl">پەیوەندیمان پێوە بکە</bdo>
+                            </small>
+                            <ul class="list-unstyled p-0 pt-2 m-0 d-flex" style="font-size: 20px;">
+                                <li class="me-2"><a href="#"><i class="bi bi-facebook"></i></a></li>
+                                <li class="me-2"><a href="#"  style="color:#229ED9"> <i class="bi bi-telegram"></i></a></li>
+                                <li><a href="#"><img src="svg/gmail.svg" alt="" width="30px" style="transform: translateY(-2px);"></a></li>
+                            </ul>
+                           
+                        </div>
+
                     </div>
                 </div>
-              
+
             </div>
 
         </section>

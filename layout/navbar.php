@@ -16,7 +16,7 @@ $row1 = $profile->fetch_assoc();
     </form>
     <div class="profile col-2 d-flex align-items-center justify-content-evenly">
         <a href="create.php" class="create">
-            <button class="btn btn-sm rounded rounded-4 border-none outline-none"><bdo dir="rtl">دروستکردن</bdo></button>
+            <button class="btn btn-sm rounded rounded-4 border-none outline-none"><bdo dir="rtl">پۆست</bdo></button>
         </a>
         <div class="account">
             <a href="<?= 'profile.php?id=' . $row1['id'] ?>">
@@ -53,7 +53,7 @@ $row1 = $profile->fetch_assoc();
             <i class="bi bi-person-fill me-1"></i><bdo dir="rtl">پرۆفایل</bdo>
         </a>
         <a href="create.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
-            <i class="fa-regular fa-square-plus me-1"></i>دروستکردن<bdo dir="rtl"></bdo>
+            <i class="fa-regular fa-square-plus me-1"></i>پۆست<bdo dir="rtl"></bdo>
         </a>
         <a href="setting.php" class="btn  p-2 border rounded rounded-4 mt-3 ms-1">
             <i class="bi bi-gear-wide me-1"></i> <bdo dir="rtl">ڕێکخستن</bdo>
