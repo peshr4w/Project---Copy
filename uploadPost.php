@@ -126,34 +126,35 @@
 
 
 
-        fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                let concepts = result.outputs[0].data.concepts
-                for (let i = 0; i < concepts.length; i++) {
-                    categories.push(concepts[i].name)
+        // fetch("https://api.clarifai.com/v2/models/" + MODEL_ID + "/versions/" + MODEL_VERSION_ID + "/outputs", requestOptions)
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         let concepts = result.outputs[0].data.concepts
+        //         for (let i = 0; i < concepts.length; i++) {
+        //             categories.push(concepts[i].name)
 
-                }
-                console.log(categories)
-                document.getElementById("categories").value = categories;
-                let avalable = setInterval(() => {
-                    if (categories == "" && imageName == "") {
-                        console.log("empty")
-                    } else {
-                        clearTimeout(avalable)
-                        let xhr = new XMLHttpRequest();
-                        xhr.open("GET", `php/setCategories.php?imageName=${imageName}&categories=${categories}`);
-                        xhr.onreadystatechange = () => {
-                            if (xhr.status == 200 && xhr.readyState == 4) {
-                                let res = xhr.response;
-                            }
-                        }
-                        xhr.send();
-                    }
-                }, 100)
-            })
-            .catch(error => console.log('error', error));
+        //         }
+        //         console.log(categories)
+        //         document.getElementById("categories").value = categories;
+        //         let avalable = setInterval(() => {
+        //             if (categories == "" && imageName == "") {
+        //                 console.log("empty")
+        //             } else {
+        //                 clearTimeout(avalable)
+        //                 let xhr = new XMLHttpRequest();
+        //                 xhr.open("GET", `php/setCategories.php?imageName=${imageName}&categories=${categories}`);
+        //                 xhr.onreadystatechange = () => {
+        //                     if (xhr.status == 200 && xhr.readyState == 4) {
+        //                         let res = xhr.response;
+        //                     }
+        //                 }
+        //                 xhr.send();
+        //             }
+        //         }, 100)
+        //     })
+        //     .catch(error => console.log('error', error));
     </script>
+    <script src="js/home.js"></script>
 
 </body>
 

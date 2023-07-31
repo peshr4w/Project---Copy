@@ -34,13 +34,13 @@ $res = "";
             $res =  "پاسۆردەکان یەک ناگرنەوە";
         }   else {
             $email = $_POST['email'];
-            $session = time();
+            $session = time().random_int(10000,99999);
             $username = secure($_POST['username']);
             $password = md5($_POST['password1']);
-            $code = md5("C0D$_".random_ (10000,99999));
+            $code = md5("C0D@_".random_int(10000,99999));
             $av = $conn->query("select security_code from users");
             if($av->num_rows > 0){
-                $code = md5("C0D$_". random_int(20000,99999));
+                $code = md5("C0D@_". random_int(20000,99999));
             }
             $_SESSION['user_id'] = $session;
             $sql = "insert into users(username,email,session_id,password, security_code) values( '$username','$email','$session','$password', '$code')";
