@@ -56,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
             color: green;
         }
 
-        .alert2 {
+        .alert2, .alert3 {
             background-color: rgba(255 0 0/10%);
             color: res;
         }
@@ -85,8 +85,11 @@ if (!isset($_SESSION['user_id'])) {
     <div class="alert2 text-center  mx-5 rounded-4 p-2 mb-0" style="display: none;">
         <bdo dir="rtl">تکایە دڵنیابە ئیمەڵەکەت بەڕاستی نوسیوە</bdo>
     </div>
+    <div class="alert3 text-center  mx-5 rounded-4 p-2 mb-0" style="display: none;">
+    <bdo dir="rtl">پاسۆرد هەڵەیە</bdo>
+    </div>
     <div id="delete-posts" class="sh delete-posts position-absolute w-100 h-100  align-items-center justify-content-center" style="display: none;">
-        <div class="delete-modal mx-5 border rounded-4 shadow-sm p-3 bg-white">
+        <div class="delete-modal mx-5 rounded-4 shadow p-3 bg-white">
             <h6 class="mb-3 text-end"><bdo dir="rtl">دەتەوێت گشت پۆستەکان بسریتەوە؟</bdo></h6>
             <div class="text-center"> <small class="code"></small></div>
             <input type="text" class="text-center confirm form-control w-50 mb-3 mx-auto rounded-4 confirm-code">
@@ -97,7 +100,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div id="delete-likes" class="sh delete-likes position-absolute w-100 h-100  align-items-center justify-content-center" style="display: none;">
-        <div class="delete-modal mx-5 border rounded-4 shadow-sm p-3 bg-white">
+        <div class="delete-modal mx-5 rounded-4 shadow p-3 bg-white">
             <h6 class="mb-3 text-end"><bdo dir="rtl">دەتەوێت گشت لایکەکان بسریتەوە؟</bdo></h6>
             <div class="text-center"> <small class="code"></small></div>
             <input type="text" class="text-center confirm form-control w-50 mb-3 mx-auto rounded-4 confirm-code">
@@ -108,7 +111,7 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div id="delete-comments" class="sh delete-comments position-absolute w-100 h-100  align-items-center justify-content-center" style="display: none;">
-        <div class="delete-modal mx-5 border rounded-4 shadow-sm p-3 bg-white">
+        <div class="delete-modal mx-5 rounded-4 shadow p-3 bg-white">
             <h6 class="mb-3 text-end"><bdo dir="rtl">دەتەوێت گشت کۆمێنتەکان بسریتەوە؟</bdo></h6>
             <div class="text-center"> <small class="code"></small></div>
             <input type="text" class="text-center confirm form-control w-50 mb-3 mx-auto rounded-4 confirm-code">
@@ -119,10 +122,9 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
     <div id="delete-account" class="sh delete-account position-absolute w-100 h-100  align-items-center justify-content-center" style="display: none;">
-        <div class="delete-modal mx-5 border rounded-4 shadow-sm p-3 bg-white ">
+        <div class="delete-modal mx-5 rounded-4 shadow p-3 bg-white ">
             <h6 class="mb-3 text-end"><bdo dir="rtl">دەتەوێت ئەکاونتەکەت بسریتەوە؟</bdo></h6>
-            <div class="text-center"> <small class="code"></small></div>
-            <input type="text" class="text-center confirm form-control w-50 mb-3 mx-auto rounded-4 confirm-code">
+            <input type="text" class="text-center confirm form-control w-75 mb-3 mx-auto rounded-4 confirm-code" placeholder="پاسۆرد">
             <div class="btns text-end">
                 <button class="btn p-1 border-0 outline-0 rounded-4 px-2" onclick="hideDeleteAccount()"><bdo dir="rtl">نەخێر</bdo></button>
                 <button class="btn p-1 border-0 outline-0 rounded-4 px-2 delete" disabled><bdo dir="rtl">بەڵێ</bdo></button>
@@ -300,12 +302,15 @@ if (!isset($_SESSION['user_id'])) {
             $("#delete-account .code").html(Math.floor(Math.random() * 99999999));
 
             $("#delete-account .confirm-code").keyup(() => {
-                if ($("#delete-account .confirm-code").val() == $("#delete-account .code").html()) {
+                
+                if ($("#delete-account .confirm-code").val() != "") {
                     $("#delete-account .delete").removeAttr('disabled');
+                    let pass = $("#delete-account .confirm-code").val();
                     $("#delete-account .delete").unbind('click').bind('click', () => {
                         $.ajax({
                             type: "POST",
                             url: "php/deleteAccount.php",
+                            data:{pass: pass},
                             success: function(res) {
                                 if (res == "deleted") {
                                     $("#delete-account").hide();
@@ -315,6 +320,13 @@ if (!isset($_SESSION['user_id'])) {
                                         $(".alert").hide();
                                         location.reload()
                                     }, 3000)
+                                }else{
+                                    $("#delete-acc").hide();
+                                    $(".alert3").show();
+                                    $("#delete-acc .confirm-code").val("");
+                                    setTimeout(() => {
+                                        $(".alert3").hide();
+                                    }, 3000)        
                                 }
                             }
                         });
