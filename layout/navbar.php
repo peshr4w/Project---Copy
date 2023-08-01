@@ -18,7 +18,7 @@ $row1 = $profile->fetch_assoc();
         <a href="create.php" class="create">
             <button class="btn btn-sm rounded rounded-4 border-none outline-none"><bdo dir="rtl">پۆست</bdo></button>
         </a>
-        <div class="account">
+        <div class="account border">
             <a href="<?= 'profile.php?id=' . $row1['id'] ?>">
                 <img src="<?= 'images/users/' . $row1['image'] ?>" alt="<?= $row1['username'] ?>" class="w-100">
             </a>

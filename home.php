@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id'])) {
     ?>
     <div class="posts p-3 px-5 gap-4 ">
         <?php
-        $posts = $conn->query("select * from posts");
+        $posts = $conn->query("select * from posts order by created desc");
 
         while ($row = $posts->fetch_assoc()) {
             $id = $row['user_id'];

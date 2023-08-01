@@ -25,23 +25,30 @@
 
         $image_tmpname = $_FILES['image']['tmp_name'];
         $post_id = "";
+        $exts = ["png", "jpg", "jpeg", "gif"];
         $ext =  strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
+       
         if ($_FILES["image"]["size"] >  5242880) {
             $error = "قەبارەی وێنەکە دەبێت کەمتر بێت لە ٥ مێگابایت";
         }
-         elseif ($ext != "png" || $ext != "jpg" || $ext != "jpeg" || $ext != "gif") {
+         elseif (!in_array($ext, $exts)) {
             $error = "ببورە کێشەیەک هەیە، تکایە هەوڵبدەرەوە";
         } 
         else {
-            $image_name = time() . $_FILES['image']['name'];
+            $image_name = "IMG_".date("Ymdhis")."_".random_int(1000000, 9999999).".".$ext;
+            $av = $conn->query("select image from posts where image = '$image_name'");
+            if($av->num_rows > 0){
+                $image_name = "IMG_".date("Ymdhis")."_".random_int(2000000, 9999999).".".$ext;
+            }
             $title = $_POST['title'];
 
             $description = $_POST['description'];
             $tags = $_POST['tags'];
+            
             if (move_uploaded_file($image_tmpname, 'images/uploads/' . $image_name)) {
 
                 $conn->query("insert into posts(user_id, image, title,description, tags) values('$user_id', '$image_name' ,'$title', '$description','$tags')");
-
+                
                 $followers = $conn->query("select *  from followers where user_id = '$user_id'");
                 if($followers->num_rows > 0){
                   while($follower = $followers->fetch_assoc()){

@@ -139,7 +139,7 @@ if (!isset($_SESSION['user_id'])) {
                 <?php if ($user_id == $row['session_id']) { ?>
                     <form id="updateImage" action="php/updateImage.php" enctype="multipart/form-data" method="post" class="poition-absolute">
                         <label for="profileImage" class="text-secondary" id="updatePfp"><small><bdo dir="rtl" class="me-1">گۆڕینی وێنەی پڕۆفایل</bdo></small><i class="bi bi-image"></i></label>
-                        <input type="file" name="profileImage" id="profileImage" accept="image/png, image/jpg, image/jpeg, image/gif" class="d-none">
+                        <input type="file" name="profileImage" id="profileImage" accept="image/*" class="d-none">
                     </form>
                 <?php } ?>
                 <div class="details text-center mt-2">

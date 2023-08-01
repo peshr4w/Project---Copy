@@ -31,7 +31,7 @@ if (!isset($_SESSION['user_id'])) {
                         <img src="" class="w-100" id="preview">
                     </div>
                 </label>
-                <input type="file" name="image" id="image" style="display: none;"  onchange="loadFile(event)">
+                <input type="file" name="image" id="image" style="display: none;"  onchange="loadFile(event)" accept="image/*">
             </div>
             <div class="div" id="details" style="display: none;">
                 <div class="form-group mb-3 w-75">
